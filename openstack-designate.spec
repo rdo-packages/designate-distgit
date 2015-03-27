@@ -2,18 +2,15 @@
 %global common_desc Designate is an OpenStack inspired DNSaaS.
 
 Name:		openstack-%{service}
-#Version:    XXX
-#Release:    XXX{?dist}
-Version:    2015.1
-Release:    0.1.b3%{?dist}
+Version:    XXX
+Release:    XXX{?dist}
 Summary:	OpenStack DNS Service
 
 Group:		Applications/System
 License:	ASL 2.0
 URL:		http://launchpad.net/%{service}/
 
-#Source0:	http://tarballs.openstack.org/%{service}/%{service}-master.tar.gz
-Source0:	http://tarballs.openstack.org/%{service}/designate-2015.1.0b3.tar.gz
+Source0:	http://tarballs.openstack.org/%{service}/%{service}-master.tar.gz
 Source1:	%{service}.logrotate
 Source2:	%{service}-sudoers
 Source10:	designate-agent.service
@@ -205,8 +202,7 @@ This package contains OpenStack Designate Sink service.
 
 
 %prep
-#%setup -q -n %{service}-%{upstream_version}
-%setup -q -n %{service}-%{version}.0b3
+%setup -q -n %{service}-%{upstream_version}
 
 find %{service} -name \*.py -exec sed -i '/\/usr\/bin\/env python/{d;q}' {} +
 
