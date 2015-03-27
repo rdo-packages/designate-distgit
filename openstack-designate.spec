@@ -10,6 +10,8 @@ Group:		Applications/System
 License:	ASL 2.0
 URL:		http://launchpad.net/%{service}/
 
+Patch0:		0001-Fixed-rootwrap-file-installation.patch
+
 Source0:	http://tarballs.openstack.org/%{service}/%{service}-master.tar.gz
 Source1:	%{service}.logrotate
 Source2:	%{service}-sudoers
@@ -49,8 +51,11 @@ Group:		Applications/System
 
 Requires:	python-babel >= 1.3
 # TODO: Fedora not satisfying the requirement
-Requires:	python-dns >= 1.12.0
-Requires:	python-eventlet >= 0.16.1
+#Requires:	python-dns >= 1.12.0
+Requires:	python-dns
+# TODO: Fedora not satisfying the requirement
+#Requires:	python-eventlet >= 0.16.1
+Requires:	python-eventlet
 Requires:	python-flask >= 0.10
 Requires:	python-greenlet >= 0.3.2
 Requires:	python-iso8601 >= 0.1.9
@@ -58,7 +63,9 @@ Requires:	python-jinja2 >= 2.6
 Requires:	python-jsonschema >= 2.0.0
 Requires:	python-keystonemiddleware >= 1.5.0
 Requires:	python-memcached >= 1.48
-Requires:	python-migrate >= 0.9.5
+# TODO: Fedora has 0.9.4 only
+#Requires:	python-migrate >= 0.9.5
+Requires:	python-migrate
 Requires:	python-netaddr >= 0.7.12
 Requires:	python-neutronclient >= 2.3.11
 Requires:	python-oslo-concurrency >= 1.8.0
@@ -70,20 +77,23 @@ Requires:	python-oslo-log >= 1.0.0
 Requires:	python-oslo-messaging >= 1.8.0
 Requires:	python-oslo-middleware >= 1.0.0
 Requires:	python-oslo-policy >= 0.3.1
-Requires:	python-oslo-roowrap >= 1.6.0
+Requires:	python-oslo-rootwrap >= 1.6.0
 Requires:	python-oslo-serialization >= 1.4.0
 Requires:	python-oslo-utils >= 1.4.0
 Requires:	python-paste
 Requires:	python-paste-deploy >= 1.5.0
 Requires:	python-pbr >= 0.6
 # TODO: no Fedora build for the dependency
-Requires:	python-pecan >= 0.8.0
+#Requires:	python-pecan >= 0.8.0
+Requires:	python-pecan
 Requires:	python-psutil >= 1.1.1
 Requires:	python-routes >= 1.12.3
 Requires:	python-requests >= 2.2.0
 Requires:	python-six >= 1.9.0
 Requires:	python-sqlalchemy >= 0.9.7
-Requires:	python-stevedore >= 1.3.0
+# TODO: no Fedora build for the dependency
+#Requires:	python-stevedore >= 1.3.0
+Requires:	python-stevedore
 Requires:	python-webob >= 1.2.3
 Requires:	python-werkzeug >= 0.7
 Requires:	sudo
@@ -204,6 +214,8 @@ This package contains OpenStack Designate Sink service.
 %prep
 %setup -q -n %{service}-%{upstream_version}
 
+%patch0 -p1
+
 find %{service} -name \*.py -exec sed -i '/\/usr\/bin\/env python/{d;q}' {} +
 
 # Let's handle dependencies ourseleves
@@ -234,17 +246,15 @@ rm -rf %{buildroot}%{python2_sitelib}/tools
 
 # Move rootwrap files to proper location
 install -d -m 755 %{buildroot}%{_datarootdir}/%{service}/rootwrap
-#mv %{buildroot}/usr/etc/%{service}/rootwrap.d/*.filters %{buildroot}%{_datarootdir}/%{service}/rootwrap
-cp etc/%{service}/rootwrap.d/*.filters %{buildroot}%{_datarootdir}/%{service}/rootwrap
+mv %{buildroot}/usr/etc/%{service}/rootwrap/*.filters %{buildroot}%{_datarootdir}/%{service}/rootwrap
 
 # Move config files to proper location
 install -d -m 755 %{buildroot}%{_sysconfdir}/%{service}
-#mv %{buildroot}/usr/etc/%{service}/* %{buildroot}%{_sysconfdir}/%{service}
-#mv %{buildroot}%{_sysconfdir}/%{service}/api-paste.ini %{buildroot}%{_datadir}/%{service}/api-paste.ini
-cp etc/%{service}/%{service}.conf.sample %{buildroot}%{_sysconfdir}/%{service}/%{service}.conf
-cp etc/%{service}/rootwrap.conf.sample %{buildroot}%{_sysconfdir}/%{service}/rootwrap.conf
-cp etc/%{service}/policy.json %{buildroot}%{_sysconfdir}/%{service}/policy.json
-cp etc/%{service}/api-paste.ini %{buildroot}%{_datadir}/%{service}/api-paste.ini
+for sample in %{service} rootwrap; do
+    mv %{buildroot}/usr/etc/%{service}/$sample.conf.sample %{buildroot}%{_sysconfdir}/%{service}/$sample.conf
+done
+mv %{buildroot}/usr/etc/%{service}/* %{buildroot}%{_sysconfdir}/%{service}
+mv %{buildroot}%{_sysconfdir}/%{service}/api-paste.ini %{buildroot}%{_datadir}/%{service}/api-paste.ini
 
 # Install logrotate
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/openstack-%{service}
