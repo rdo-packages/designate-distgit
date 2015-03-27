@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenStack Designate Central service
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=designate
+ExecStart=/usr/bin/designate-central --config-file /usr/share/designate/designate-dist.conf --config-file /etc/designate/designate.conf --log-file /var/log/designate/central.log
+PrivateTmp=true
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

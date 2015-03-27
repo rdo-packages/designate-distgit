@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenStack Designate Sink service
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=designate
+ExecStart=/usr/bin/designate-sink --config-file /usr/share/designate/designate-dist.conf --config-file /etc/designate/designate.conf --log-file /var/log/designate/sink.log
+PrivateTmp=true
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
