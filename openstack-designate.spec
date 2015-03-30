@@ -10,8 +10,6 @@ Group:		Applications/System
 License:	ASL 2.0
 URL:		http://launchpad.net/%{service}/
 
-Patch0:		0001-Fixed-rootwrap-file-installation.patch
-
 Source0:	http://tarballs.openstack.org/%{service}/%{service}-master.tar.gz
 Source1:	%{service}.logrotate
 Source2:	%{service}-sudoers
@@ -214,8 +212,6 @@ This package contains OpenStack Designate Sink service.
 %prep
 %setup -q -n %{service}-%{upstream_version}
 
-%patch0 -p1
-
 find %{service} -name \*.py -exec sed -i '/\/usr\/bin\/env python/{d;q}' {} +
 
 # Let's handle dependencies ourseleves
@@ -246,7 +242,7 @@ rm -rf %{buildroot}%{python2_sitelib}/tools
 
 # Move rootwrap files to proper location
 install -d -m 755 %{buildroot}%{_datarootdir}/%{service}/rootwrap
-mv %{buildroot}/usr/etc/%{service}/rootwrap/*.filters %{buildroot}%{_datarootdir}/%{service}/rootwrap
+mv %{buildroot}/usr/etc/%{service}/rootwrap.d/*.filters %{buildroot}%{_datarootdir}/%{service}/rootwrap
 
 # Move config files to proper location
 install -d -m 755 %{buildroot}%{_sysconfdir}/%{service}
