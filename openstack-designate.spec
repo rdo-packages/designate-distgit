@@ -229,7 +229,7 @@ export SKIP_PIP_INSTALL=1
 # of the code.
 while read name eq value; do
   test "$name" && test "$value" || continue
-  sed -ri "0,/^(#)? *$name *=/{s!^(#)? *$name *=.*!# $name = $value!}" etc/%{service}.conf
+  sed -ri "0,/^(#)? *$name *=/{s!^(#)? *$name *=.*!# $name = $value!}" etc/%{service}/%{service}.conf.sample
 done < %{SOURCE30}
 
 %install
