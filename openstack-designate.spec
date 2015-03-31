@@ -276,7 +276,7 @@ install -d -m 755 %{buildroot}%{_localstatedir}/run/%{service}
 install -p -D -m 640 %{SOURCE30} %{buildroot}%{_datadir}/%{service}/%{service}-dist.conf
 
 
-%pre
+%pre common
 getent group %{service} >/dev/null || groupadd -r %{service}
 getent passwd %{service} >/dev/null || \
     useradd -r -g %{service} -d %{_sharedstatedir}/%{service} -s /sbin/nologin \
