@@ -48,12 +48,8 @@ Summary:	Designate Python libraries
 Group:		Applications/System
 
 Requires:	python-babel >= 1.3
-# TODO: Fedora not satisfying the requirement
-#Requires:	python-dns >= 1.12.0
-Requires:	python-dns
-# TODO: Fedora not satisfying the requirement
-#Requires:	python-eventlet >= 0.16.1
-Requires:	python-eventlet
+Requires:	python-dns >= 1.12.0
+Requires:	python-eventlet >= 0.16.1
 Requires:	python-flask >= 0.10
 Requires:	python-greenlet >= 0.3.2
 Requires:	python-iso8601 >= 0.1.9
@@ -61,9 +57,7 @@ Requires:	python-jinja2 >= 2.6
 Requires:	python-jsonschema >= 2.0.0
 Requires:	python-keystonemiddleware >= 1.5.0
 Requires:	python-memcached >= 1.48
-# TODO: Fedora has 0.9.4 only
-#Requires:	python-migrate >= 0.9.5
-Requires:	python-migrate
+Requires:	python-migrate >= 0.9.5
 Requires:	python-netaddr >= 0.7.12
 Requires:	python-neutronclient >= 2.3.11
 Requires:	python-oslo-concurrency >= 1.8.0
@@ -81,17 +75,13 @@ Requires:	python-oslo-utils >= 1.4.0
 Requires:	python-paste
 Requires:	python-paste-deploy >= 1.5.0
 Requires:	python-pbr >= 0.6
-# TODO: no Fedora build for the dependency
-#Requires:	python-pecan >= 0.8.0
-Requires:	python-pecan
+Requires:	python-pecan >= 0.8.0
 Requires:	python-psutil >= 1.1.1
 Requires:	python-routes >= 1.12.3
 Requires:	python-requests >= 2.2.0
 Requires:	python-six >= 1.9.0
 Requires:	python-sqlalchemy >= 0.9.7
-# TODO: no Fedora build for the dependency
-#Requires:	python-stevedore >= 1.3.0
-Requires:	python-stevedore
+Requires:	python-stevedore >= 1.3.0
 Requires:	python-webob >= 1.2.3
 Requires:	python-werkzeug >= 0.7
 Requires:	sudo
