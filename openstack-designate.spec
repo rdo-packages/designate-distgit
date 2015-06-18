@@ -6,7 +6,7 @@
 
 Name:		openstack-%{service}
 Version:	2015.1.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	OpenStack DNS Service
 
 Group:		Applications/System
@@ -418,5 +418,8 @@ exit 0
 
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2015.1.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Thu Jun 4 2015 Ihar Hrachyshka <ihrachys@redhat.com> - 2015.1.0-1
 - Initial release.
