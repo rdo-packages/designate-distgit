@@ -2,8 +2,11 @@
 %global common_desc Designate is an OpenStack inspired DNSaaS.
 
 Name:		openstack-%{service}
-Version:    XXX
-Release:    XXX{?dist}
+# Liberty semver reset
+# https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
+Epoch:		1
+Version:	XXX
+Release:	XXX
 Summary:	OpenStack DNS Service
 
 Group:		Applications/System
@@ -30,7 +33,7 @@ BuildRequires:	python-pbr
 BuildRequires:	python-setuptools
 BuildRequires:	systemd-units
 
-Requires:	python-%{service} = %{version}-%{release}
+Requires:	python-%{service} = %{epoch}:%{version}-%{release}
 Requires:	openstack-utils
 
 Requires(pre): shadow-utils
@@ -97,7 +100,7 @@ This package contains the Designate Python library.
 Summary:	Designate tests
 Group:		Applications/System
 
-Requires:	python-%{service} = %{version}-%{release}
+Requires:	python-%{service} = %{epoch}:%{version}-%{release}
 
 
 %description -n python-%{service}-tests
@@ -110,7 +113,7 @@ This package contains Designate test files.
 Summary:	Designate common files
 Group:		Applications/System
 
-Requires:	python-%{service} = %{version}-%{release}
+Requires:	python-%{service} = %{epoch}:%{version}-%{release}
 
 
 %description common
@@ -123,7 +126,7 @@ This package contains Designate files common to all services.
 Summary:	OpenStack Designate agent
 Group:		Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
+Requires:	openstack-%{service}-common = %{epoch}:%{version}-%{release}
 
 
 %description agent
@@ -136,7 +139,7 @@ This package contains OpenStack Designate agent.
 Summary:	OpenStack Designate API service
 Group:		Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
+Requires:	openstack-%{service}-common = %{epoch}:%{version}-%{release}
 
 
 %description api
@@ -149,7 +152,7 @@ This package contains OpenStack Designate API service.
 Summary:	OpenStack Designate Central service
 Group:		Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
+Requires:	openstack-%{service}-common = %{epoch}:%{version}-%{release}
 Requires:	MySQL-python
 
 
@@ -163,7 +166,7 @@ This package contains OpenStack Designate Central service.
 Summary:	OpenStack Designate Mini DNS service
 Group:		Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
+Requires:	openstack-%{service}-common = %{epoch}:%{version}-%{release}
 Requires:	MySQL-python
 
 
@@ -177,7 +180,7 @@ This package contains OpenStack Designate Mini DNS service.
 Summary:	OpenStack Designate Pool Manager service
 Group:		Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
+Requires:	openstack-%{service}-common = %{epoch}:%{version}-%{release}
 
 
 %description pool-manager
@@ -190,7 +193,7 @@ This package contains OpenStack Designate Pool Manager service.
 Summary:	OpenStack Designate Sink service
 Group:		Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
+Requires:	openstack-%{service}-common = %{epoch}:%{version}-%{release}
 
 
 %description sink
