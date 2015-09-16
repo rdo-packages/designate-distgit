@@ -1,40 +1,46 @@
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
 
-%global release_name kilo
+%global release_name liberty
+%global milestone .0b3
+
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
-Name:		openstack-%{service}
-Version:	2015.1.0
-Release:	2%{?dist}
-Summary:	OpenStack DNS Service
+Name:           openstack-%{service}
+# Liberty semver reset
+# https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
+Epoch:          1
+Version:        1.0.0
+Release:        0.1%{?milestone}%{?dist}
+Summary:        OpenStack DNS Service
 
-Group:		Applications/System
-License:	ASL 2.0
-URL:		http://launchpad.net/%{service}/
+Group:          Applications/System
+License:        ASL 2.0
+URL:            http://launchpad.net/%{service}/
 
-Source0:	https://launchpad.net/%{service}/%{release_name}/%{version}/+download/%{service}-%{upstream_version}.tar.gz
-Source1:	%{service}.logrotate
-Source2:	%{service}-sudoers
-Source10:	designate-agent.service
-Source11:	designate-api.service
-Source12:	designate-central.service
-Source13:	designate-mdns.service
-Source14:	designate-pool-manager.service
-Source15:	designate-sink.service
+Source0:        http://launchpad.net/%{service}/%{release_name}/%{release_name}-3/+download/%{service}-%{upstream_version}.tar.gz
+Source1:        %{service}.logrotate
+Source2:        %{service}-sudoers
+Source10:       designate-agent.service
+Source11:       designate-api.service
+Source12:       designate-central.service
+Source13:       designate-mdns.service
+Source14:       designate-pool-manager.service
+Source15:       designate-sink.service
+Source16:       designate-zone-manager.service
 
-Source30:	%{service}-dist.conf
+Source30:       %{service}-dist.conf
 
-BuildArch:	noarch
+BuildArch:      noarch
 
-BuildRequires:	python2-devel
-BuildRequires:	python-d2to1
-BuildRequires:	python-pbr
-BuildRequires:	python-setuptools
-BuildRequires:	systemd-units
+BuildRequires:  python2-devel
+BuildRequires:  python-d2to1
+BuildRequires:  python-pbr
+BuildRequires:  python-setuptools
+BuildRequires:  systemd-units
 
-Requires:	python-%{service} = %{version}-%{release}
-Requires:	openstack-utils
+Requires:       python-%{service} = %{epoch}:%{version}-%{release}
+Requires:       openstack-utils
 
 Requires(pre): shadow-utils
 Requires(post): systemd
@@ -47,47 +53,47 @@ Requires(postun): systemd
 
 
 %package -n python-%{service}
-Summary:	Designate Python libraries
-Group:		Applications/System
+Summary:        Designate Python libraries
+Group:          Applications/System
 
-Requires:	python-babel >= 1.3
-Requires:	python-dns >= 1.12.0
-Requires:	python-eventlet >= 0.16.1
-Requires:	python-flask >= 0.10
-Requires:	python-greenlet >= 0.3.2
-Requires:	python-iso8601 >= 0.1.9
-Requires:	python-jinja2 >= 2.6
-Requires:	python-jsonschema >= 2.0.0
-Requires:	python-keystonemiddleware >= 1.5.0
-Requires:	python-memcached >= 1.48
-Requires:	python-migrate >= 0.9.5
-Requires:	python-netaddr >= 0.7.12
-Requires:	python-neutronclient >= 2.3.11
-Requires:	python-oslo-concurrency >= 1.8.0
-Requires:	python-oslo-config >= 2:1.9.3
-Requires:	python-oslo-context >= 0.2.0
-Requires:	python-oslo-db >= 1.7.0
-Requires:	python-oslo-i18n >= 1.5.0
-Requires:	python-oslo-log >= 1.0.0
-Requires:	python-oslo-messaging >= 1.8.0
-Requires:	python-oslo-middleware >= 1.0.0
-Requires:	python-oslo-policy >= 0.3.1
-Requires:	python-oslo-rootwrap >= 1.6.0
-Requires:	python-oslo-serialization >= 1.4.0
-Requires:	python-oslo-utils >= 1.4.0
-Requires:	python-paste
-Requires:	python-paste-deploy >= 1.5.0
-Requires:	python-pbr >= 0.6
-Requires:	python-pecan >= 0.8.0
-Requires:	python-psutil >= 1.1.1
-Requires:	python-routes >= 1.12.3
-Requires:	python-requests >= 2.2.0
-Requires:	python-six >= 1.9.0
-Requires:	python-sqlalchemy >= 0.9.7
-Requires:	python-stevedore >= 1.3.0
-Requires:	python-webob >= 1.2.3
-Requires:	python-werkzeug >= 0.7
-Requires:	sudo
+Requires:       python-babel >= 1.3
+Requires:       python-dns >= 1.12.0
+Requires:       python-eventlet >= 0.16.1
+Requires:       python-flask >= 0.10
+Requires:       python-greenlet >= 0.3.2
+Requires:       python-iso8601 >= 0.1.9
+Requires:       python-jinja2 >= 2.6
+Requires:       python-jsonschema >= 2.0.0
+Requires:       python-keystonemiddleware >= 1.5.0
+Requires:       python-memcached >= 1.48
+Requires:       python-migrate >= 0.9.5
+Requires:       python-netaddr >= 0.7.12
+Requires:       python-neutronclient >= 2.3.11
+Requires:       python-oslo-concurrency >= 1.8.0
+Requires:       python-oslo-config >= 2:1.9.3
+Requires:       python-oslo-context >= 0.2.0
+Requires:       python-oslo-db >= 1.7.0
+Requires:       python-oslo-i18n >= 1.5.0
+Requires:       python-oslo-log >= 1.0.0
+Requires:       python-oslo-messaging >= 1.8.0
+Requires:       python-oslo-middleware >= 1.0.0
+Requires:       python-oslo-policy >= 0.3.1
+Requires:       python-oslo-rootwrap >= 1.6.0
+Requires:       python-oslo-serialization >= 1.4.0
+Requires:       python-oslo-utils >= 1.4.0
+Requires:       python-paste
+Requires:       python-paste-deploy >= 1.5.0
+Requires:       python-pbr >= 0.6
+Requires:       python-pecan >= 0.8.0
+Requires:       python-psutil >= 1.1.1
+Requires:       python-routes >= 1.12.3
+Requires:       python-requests >= 2.2.0
+Requires:       python-six >= 1.9.0
+Requires:       python-sqlalchemy >= 0.9.7
+Requires:       python-stevedore >= 1.3.0
+Requires:       python-webob >= 1.2.3
+Requires:       python-werkzeug >= 0.7
+Requires:       sudo
 
 
 %description -n python-%{service}
@@ -97,10 +103,10 @@ This package contains the Designate Python library.
 
 
 %package -n python-%{service}-tests
-Summary:	Designate tests
-Group:		Applications/System
+Summary:        Designate tests
+Group:          Applications/System
 
-Requires:	python-%{service} = %{version}-%{release}
+Requires:       python-%{service} = %{epoch}:%{version}-%{release}
 
 
 %description -n python-%{service}-tests
@@ -110,10 +116,10 @@ This package contains Designate test files.
 
 
 %package common
-Summary:	Designate common files
-Group:		Applications/System
+Summary:        Designate common files
+Group:          Applications/System
 
-Requires:	python-%{service} = %{version}-%{release}
+Requires:       python-%{service} = %{epoch}:%{version}-%{release}
 
 
 %description common
@@ -123,10 +129,10 @@ This package contains Designate files common to all services.
 
 
 %package agent
-Summary:	OpenStack Designate agent
-Group:		Applications/System
+Summary:        OpenStack Designate agent
+Group:          Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
+Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 
 
 %description agent
@@ -136,10 +142,10 @@ This package contains OpenStack Designate agent.
 
 
 %package api
-Summary:	OpenStack Designate API service
-Group:		Applications/System
+Summary:        OpenStack Designate API service
+Group:          Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
+Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 
 
 %description api
@@ -149,11 +155,11 @@ This package contains OpenStack Designate API service.
 
 
 %package central
-Summary:	OpenStack Designate Central service
-Group:		Applications/System
+Summary:        OpenStack Designate Central service
+Group:          Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
-Requires:	MySQL-python
+Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
+Requires:       MySQL-python
 
 
 %description central
@@ -163,11 +169,11 @@ This package contains OpenStack Designate Central service.
 
 
 %package mdns
-Summary:	OpenStack Designate Mini DNS service
-Group:		Applications/System
+Summary:        OpenStack Designate Mini DNS service
+Group:          Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
-Requires:	MySQL-python
+Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
+Requires:       MySQL-python
 
 
 %description mdns
@@ -177,10 +183,10 @@ This package contains OpenStack Designate Mini DNS service.
 
 
 %package pool-manager
-Summary:	OpenStack Designate Pool Manager service
-Group:		Applications/System
+Summary:        OpenStack Designate Pool Manager service
+Group:          Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
+Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 
 
 %description pool-manager
@@ -190,16 +196,29 @@ This package contains OpenStack Designate Pool Manager service.
 
 
 %package sink
-Summary:	OpenStack Designate Sink service
-Group:		Applications/System
+Summary:        OpenStack Designate Sink service
+Group:          Applications/System
 
-Requires:	openstack-%{service}-common = %{version}-%{release}
+Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 
 
 %description sink
 %{common_desc}
 
 This package contains OpenStack Designate Sink service.
+
+
+%package zone-manager
+Summary:        OpenStack Designate Zone Manager service
+Group:          Applications/System
+
+Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
+
+
+%description zone-manager
+%{common_desc}
+
+This package contains OpenStack Designate Zone Manager service.
 
 
 %prep
@@ -258,6 +277,7 @@ install -p -D -m 644 %{SOURCE12} %{buildroot}%{_unitdir}/designate-central.servi
 install -p -D -m 644 %{SOURCE13} %{buildroot}%{_unitdir}/designate-mdns.service
 install -p -D -m 644 %{SOURCE14} %{buildroot}%{_unitdir}/designate-pool-manager.service
 install -p -D -m 644 %{SOURCE15} %{buildroot}%{_unitdir}/designate-sink.service
+install -p -D -m 644 %{SOURCE16} %{buildroot}%{_unitdir}/designate-zone-manager.service
 
 # Setup directories
 install -d -m 755 %{buildroot}%{_datadir}/%{service}
@@ -349,6 +369,14 @@ exit 0
 %systemd_postun_with_restart designate-sink.service
 
 
+%preun zone-manager
+%systemd_preun designate-zone-manager.service
+
+
+%postun zone-manager
+%systemd_postun_with_restart designate-zone-manager.service
+
+
 %files -n python-%{service}-tests
 %license LICENSE
 %{python2_sitelib}/%{service}/tests
@@ -417,7 +445,16 @@ exit 0
 %{_unitdir}/designate-sink.service
 
 
+%files zone-manager
+%license LICENSE
+%{_bindir}/designate-zone-manager
+%{_unitdir}/designate-zone-manager.service
+
+
 %changelog
+* Wed Sep 16 2015 Ihar Hrachyshka <ihrachys@redhat.com> - 1.0.0-0.1.0b3
+- Rebase for Liberty M3
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2015.1.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
