@@ -11,7 +11,7 @@ Name:           openstack-%{service}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        1.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        0.2%{?milestone}%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
@@ -28,6 +28,10 @@ Source13:       designate-mdns.service
 Source14:       designate-pool-manager.service
 Source15:       designate-sink.service
 Source16:       designate-zone-manager.service
+
+#
+# patches_base=1.0.0.0b3
+#
 
 Source30:       %{service}-dist.conf
 
@@ -452,6 +456,9 @@ exit 0
 
 
 %changelog
+* Wed Sep 16 2015 Ihar Hrachyshka <ihrachys@redhat.com> 1:1.0.0-0.2.0b3.el7
+- Update to upstream 1.0.0.0b3
+
 * Wed Sep 16 2015 Ihar Hrachyshka <ihrachys@redhat.com> - 1.0.0-0.1.0b3
 - Rebase for Liberty M3
 
