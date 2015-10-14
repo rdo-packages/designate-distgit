@@ -154,7 +154,6 @@ Summary:        OpenStack Designate Central service
 Group:          Applications/System
 
 Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
-Requires:       MySQL-python
 
 
 %description central
@@ -168,7 +167,6 @@ Summary:        OpenStack Designate Mini DNS service
 Group:          Applications/System
 
 Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
-Requires:       MySQL-python
 
 
 %description mdns
