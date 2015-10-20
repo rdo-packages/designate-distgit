@@ -2,7 +2,6 @@
 %global common_desc Designate is an OpenStack inspired DNSaaS.
 
 %global release_name liberty
-%global milestone .0rc1
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -11,14 +10,14 @@ Name:           openstack-%{service}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        1.0.0
-Release:        0.2%{?milestone}%{?dist}
+Release:        1%{?milestone}%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
 License:        ASL 2.0
 URL:            http://launchpad.net/%{service}/
 
-Source0:        http://launchpad.net/%{service}/%{release_name}/%{release_name}-rc1/+download/%{service}-%{upstream_version}.tar.gz
+Source0:        http://launchpad.net/%{service}/%{release_name}/%{version}/+download/%{service}-%{upstream_version}.tar.gz
 Source1:        %{service}.logrotate
 Source2:        %{service}-sudoers
 Source10:       designate-agent.service
@@ -28,10 +27,6 @@ Source13:       designate-mdns.service
 Source14:       designate-pool-manager.service
 Source15:       designate-sink.service
 Source16:       designate-zone-manager.service
-
-#
-# patches_base=1.0.0.0rc1
-#
 
 Source30:       %{service}-dist.conf
 
@@ -456,6 +451,9 @@ exit 0
 
 
 %changelog
+* Tue Oct 20 2015 Alan Pevec <alan.pevec@redhat.com> 1:1.0.0-1
+- Update to 1.0.0
+
 * Thu Oct 01 2015 Ihar Hrachyshka <ihrachys@redhat.com> 1:1.0.0-0.2.0rc1.el7
 - Update to upstream 1.0.0.0rc1
 
