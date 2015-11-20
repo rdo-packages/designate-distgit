@@ -8,6 +8,7 @@ User=designate
 ExecStart=/usr/bin/designate-central --config-file /usr/share/designate/designate-dist.conf --config-file /etc/designate/designate.conf --log-file /var/log/designate/central.log
 PrivateTmp=true
 KillMode=process
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
