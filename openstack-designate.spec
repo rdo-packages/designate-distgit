@@ -384,7 +384,7 @@ exit 0
 
 %files common
 %license LICENSE
-%doc README.md
+%doc README.rst
 %dir %{_sysconfdir}/%{service}
 %attr(-, root, %{service}) %{_datadir}/%{service}/%{service}-dist.conf
 %config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/%{service}.conf
