@@ -1,19 +1,23 @@
+%define milestone .0rc1
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
+
+
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           openstack-%{service}
 # Liberty semver reset
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
-Version:        XXX
-Release:        XXX
+Version:        2.0.0
+Release:        0.1%{?milestone}%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
 License:        ASL 2.0
 URL:            http://launchpad.net/%{service}/
 
-Source0:        http://tarballs.openstack.org/%{service}/%{service}-master.tar.gz
+Source0:        http://tarballs.openstack.org/%{service}/%{service}-%{version}%{?milestone}.tar.gz
 Source1:        %{service}.logrotate
 Source2:        %{service}-sudoers
 Source10:       designate-agent.service
@@ -445,3 +449,5 @@ exit 0
 
 
 %changelog
+* Thu Mar 24 2016 RDO <rdo-list@redhat.com> 2.0.0-0.1.0rc1
+- RC1 Rebuild for Mitaka rc1
