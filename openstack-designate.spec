@@ -1,4 +1,3 @@
-%define milestone .0rc2
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
 
@@ -10,7 +9,7 @@ Name:           openstack-%{service}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        2.0.0
-Release:        0.2%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
@@ -18,9 +17,6 @@ License:        ASL 2.0
 URL:            http://launchpad.net/%{service}/
 
 Source0:        http://tarballs.openstack.org/%{service}/%{service}-%{version}%{?milestone}.tar.gz
-#
-# patches_base=2.0.0.0rc2
-#
 
 Source1:        %{service}.logrotate
 Source2:        %{service}-sudoers
@@ -455,6 +451,9 @@ exit 0
 
 
 %changelog
+* Thu Apr  7 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 1:2.0.0-1
+- Upstream 2.0.0
+
 * Sat Apr 02 2016 Haikel Guemar <hguemar@fedoraproject.org> 1:2.0.0-0.2.0rc1
 - Update to 2.0.0.0rc2
 
