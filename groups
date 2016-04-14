@@ -1,5 +1,5 @@
-# UUID          Group Name
-6ddfecad023c6f4fa3ac8c4d2583c502ea675a73 	Non-Interactive Users
-2c73d34cd46ab0064811ef1fe28a011086d0e15e       	designate-distgit-core
-596c7cb3b1580a804ec83a5f00e755cc1c3d82d3        	designate-distgit-ptl
-global:Registered-Users		Registered Users
+# UUID                                  	Group Name
+#
+2c73d34cd46ab0064811ef1fe28a011086d0e15e	designate-distgit-core
+596c7cb3b1580a804ec83a5f00e755cc1c3d82d3	openstack/designate-distgit-ptl
+global:Registered-Users                 	Registered Users
