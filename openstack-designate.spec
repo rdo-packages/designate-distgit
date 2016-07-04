@@ -74,6 +74,7 @@ Requires:       python-oslo-log >= 1.14.0
 Requires:       python-oslo-messaging >= 4.0.0
 Requires:       python-oslo-middleware >= 3.0.0
 Requires:       python-oslo-policy >= 0.5.0
+Requires:       python-oslo-reports >= 0.6.0
 Requires:       python-oslo-rootwrap >= 1.6.0
 Requires:       python-oslo-serialization >= 1.10.0
 Requires:       python-oslo-service >= 1.0.0
