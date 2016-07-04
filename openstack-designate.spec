@@ -396,6 +396,7 @@ exit 0
 %dir %attr(0755, %{service}, %{service}) %{_sharedstatedir}/%{service}
 %dir %attr(0750, %{service}, %{service}) %{_localstatedir}/log/%{service}
 %{_bindir}/designate-rootwrap
+%{_bindir}/designate-manage
 %dir %{_datarootdir}/%{service}
 %dir %{_datarootdir}/%{service}/rootwrap
 %{_datarootdir}/%{service}/rootwrap/bind9.filters
@@ -418,7 +419,6 @@ exit 0
 %files central
 %license LICENSE
 %{_bindir}/designate-central
-%{_bindir}/designate-manage
 %{_unitdir}/designate-central.service
 
 
