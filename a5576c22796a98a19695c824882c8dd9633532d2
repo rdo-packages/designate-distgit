@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da2a55be_6cb4b3f2",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-07-05T10:08:00Z",
+      "side": 1,
+      "message": "+1 this one is still good for Mitaka, so we don\u0027t need to create rpm-mitaka yet",
+      "revId": "a5576c22796a98a19695c824882c8dd9633532d2",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
