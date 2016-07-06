@@ -248,17 +248,13 @@ rm -rf %{buildroot}%{python2_sitelib}/bin
 rm -rf %{buildroot}%{python2_sitelib}/doc
 rm -rf %{buildroot}%{python2_sitelib}/tools
 
-# Move rootwrap files to proper location
-install -d -m 755 %{buildroot}%{_datarootdir}/%{service}/rootwrap
-mv %{buildroot}/usr/etc/%{service}/rootwrap.d/*.filters %{buildroot}%{_datarootdir}/%{service}/rootwrap
-
 # Move config files to proper location
 install -d -m 755 %{buildroot}%{_sysconfdir}/%{service}
-for sample in %{service} rootwrap; do
-    mv %{buildroot}/usr/etc/%{service}/$sample.conf.sample %{buildroot}%{_sysconfdir}/%{service}/$sample.conf
-done
-mv %{buildroot}/usr/etc/%{service}/* %{buildroot}%{_sysconfdir}/%{service}
-mv %{buildroot}%{_sysconfdir}/%{service}/api-paste.ini %{buildroot}%{_datadir}/%{service}/api-paste.ini
+install -p -D -m 640 etc/%{service}.conf.sample %{buildroot}%{_sysconfdir}/%{service}/%{service}.conf
+install -p -D -m 640 etc/api-paste.ini %{buildroot}%{_sysconfdir}/%{service}/api-paste.ini
+install -p -D -m 640 etc/rootwrap.conf.sample %{buildroot}%{_sysconfdir}/%{service}/rootwrap.conf
+install -d -m 755 %{buildroot}%{_sysconfdir}/%{service}/rootwrap.d
+install -p -D -m 640 etc/rootwrap.d/* %{buildroot}%{_sysconfdir}/%{service}/rootwrap.d/
 
 # Install logrotate
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/openstack-%{service}
