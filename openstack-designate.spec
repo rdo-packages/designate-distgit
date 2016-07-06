@@ -248,17 +248,14 @@ rm -rf %{buildroot}%{python2_sitelib}/bin
 rm -rf %{buildroot}%{python2_sitelib}/doc
 rm -rf %{buildroot}%{python2_sitelib}/tools
 
-# Move rootwrap files to proper location
-install -d -m 755 %{buildroot}%{_datarootdir}/%{service}/rootwrap
-mv %{buildroot}/usr/etc/%{service}/rootwrap.d/*.filters %{buildroot}%{_datarootdir}/%{service}/rootwrap
-
 # Move config files to proper location
 install -d -m 755 %{buildroot}%{_sysconfdir}/%{service}
-for sample in %{service} rootwrap; do
-    mv %{buildroot}/usr/etc/%{service}/$sample.conf.sample %{buildroot}%{_sysconfdir}/%{service}/$sample.conf
-done
-mv %{buildroot}/usr/etc/%{service}/* %{buildroot}%{_sysconfdir}/%{service}
-mv %{buildroot}%{_sysconfdir}/%{service}/api-paste.ini %{buildroot}%{_datadir}/%{service}/api-paste.ini
+install -p -D -m 640 etc/%{service}/%{service}.conf.sample %{buildroot}%{_sysconfdir}/%{service}/%{service}.conf
+install -p -D -m 640 etc/%{service}/api-paste.ini %{buildroot}%{_sysconfdir}/%{service}/api-paste.ini
+install -p -D -m 640 etc/%{service}/policy.json %{buildroot}%{_sysconfdir}/%{service}/policy.json
+install -p -D -m 640 etc/%{service}/rootwrap.conf.sample %{buildroot}%{_sysconfdir}/%{service}/rootwrap.conf
+install -d -m 755 %{buildroot}%{_sysconfdir}/%{service}/rootwrap.d
+install -p -D -m 640 etc/%{service}/rootwrap.d/* %{buildroot}%{_sysconfdir}/%{service}/rootwrap.d/
 
 # Install logrotate
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/openstack-%{service}
@@ -391,16 +388,17 @@ exit 0
 %dir %{_sysconfdir}/%{service}
 %attr(-, root, %{service}) %{_datadir}/%{service}/%{service}-dist.conf
 %config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/%{service}.conf
-%config(noreplace) %{_sysconfdir}/%{service}/rootwrap.conf
+%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/api-paste.ini
+%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/policy.json
+%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/rootwrap.conf
+%dir %{_sysconfdir}/%{service}/rootwrap.d
+%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/rootwrap.d/*
 %config(noreplace) %{_sysconfdir}/logrotate.d/*
 %config %{_sysconfdir}/sudoers.d/%{service}
 %dir %attr(0755, %{service}, %{service}) %{_sharedstatedir}/%{service}
 %dir %attr(0750, %{service}, %{service}) %{_localstatedir}/log/%{service}
 %{_bindir}/designate-rootwrap
 %{_bindir}/designate-manage
-%dir %{_datarootdir}/%{service}
-%dir %{_datarootdir}/%{service}/rootwrap
-%{_datarootdir}/%{service}/rootwrap/bind9.filters
 
 
 %files agent
@@ -413,8 +411,6 @@ exit 0
 %license LICENSE
 %{_bindir}/designate-api
 %{_unitdir}/designate-api.service
-%attr(-, root, %{service}) %{_datadir}/%{service}/api-paste.ini
-%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/policy.json
 
 
 %files central
