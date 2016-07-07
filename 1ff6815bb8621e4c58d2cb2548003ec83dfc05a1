@@ -46,6 +46,30 @@
       "revId": "1ff6815bb8621e4c58d2cb2548003ec83dfc05a1",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a245df4_878586af",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2016-07-07T14:37:13Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll go ahead and create the branch before it fails to build.",
+      "parentUuid": "9a245df4_47a42e57",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 45
+      },
+      "revId": "1ff6815bb8621e4c58d2cb2548003ec83dfc05a1",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
