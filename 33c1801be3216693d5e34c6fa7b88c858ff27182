@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9a245df4_87f46688",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2016-07-07T10:05:31Z",
+      "side": 1,
+      "message": "Default configuration in designate looks for filters both in /etc/designate/rootwrap.d and /usr/share/designate/rootwrap. In other services rootwrap filters are located in /usr/share/%{service} so I\u0027d keep it there for consistency (unless there is explicit recomendation to change it, is there any?).",
+      "parentUuid": "9a245df4_a71fea08",
+      "revId": "33c1801be3216693d5e34c6fa7b88c858ff27182",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a245df4_27049a7d",
         "filename": "openstack-designate.spec",
         "patchSetId": 10
@@ -83,6 +101,29 @@
       "side": 1,
       "message": "I don\u0027t think it\u0027s wise to consider rootwrap files as config files. They are a part of the product and are not meant to be modified by users.",
       "parentUuid": "9a245df4_e719e223",
+      "revId": "33c1801be3216693d5e34c6fa7b88c858ff27182",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a245df4_a7f7ea8b",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 10
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2016-07-07T10:05:31Z",
+      "side": 1,
+      "message": "I think /etc/designate/rootwrap.d/* should be replaced on package updates so %config(noreplace) shouldn\u0027t be used here.",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 87
+      },
       "revId": "33c1801be3216693d5e34c6fa7b88c858ff27182",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
