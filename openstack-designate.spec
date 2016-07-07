@@ -52,18 +52,19 @@ Summary:        Designate Python libraries
 Group:          Applications/System
 
 Requires:       python-babel >= 1.3
+Requires:       python-debtcollector > 1.2.0
+Requires:       python-designateclient >= 1.5.0
 Requires:       python-dns >= 1.12.0
 Requires:       python-eventlet >= 0.16.1
 Requires:       python-flask >= 0.10
 Requires:       python-greenlet >= 0.3.2
-Requires:       python-iso8601 >= 0.1.9
 Requires:       python-jinja2 >= 2.6
 Requires:       python-jsonschema >= 2.0.0
+Requires:       python-keystoneauth1 >= 2.7.0
 Requires:       python-keystonemiddleware >= 4.0.0
 Requires:       python-memcached >= 1.48
 Requires:       python-migrate >= 0.9.6
 Requires:       python-netaddr >= 0.7.12
-Requires:       python-designateclient >= 1.5.0
 Requires:       python-neutronclient >= 2.6.0
 Requires:       python-oslo-concurrency >= 3.5.0
 Requires:       python-oslo-config >= 2:3.7.0
@@ -83,12 +84,14 @@ Requires:       python-paste
 Requires:       python-paste-deploy >= 1.5.0
 Requires:       python-pbr >= 0.6
 Requires:       python-pecan >= 1.0.0
-Requires:       python-psutil >= 1.1.1
-Requires:       python-routes >= 1.12.3
 Requires:       python-requests >= 2.2.0
+Requires:       python-routes >= 1.12.3
 Requires:       python-six >= 1.9.0
 Requires:       python-sqlalchemy >= 1.0.10
+Requires:       python-migrate >= 0.9.6
 Requires:       python-stevedore >= 1.5.0
+Requires:       python-suds >=0.6
+Requires:       python-tooz >= 1.28.0
 Requires:       python-webob >= 1.2.3
 Requires:       python-werkzeug >= 0.7
 Requires:       sudo
