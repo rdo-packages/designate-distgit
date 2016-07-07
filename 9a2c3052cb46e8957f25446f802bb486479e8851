@@ -33,6 +33,24 @@
       "revId": "9a2c3052cb46e8957f25446f802bb486479e8851",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a245df4_a7d08af8",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 10
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 104
+      },
+      "writtenOn": "2016-07-07T09:40:57Z",
+      "side": 0,
+      "message": "We don\u0027t.",
+      "parentUuid": "9a245df4_871c6615",
+      "revId": "9a2c3052cb46e8957f25446f802bb486479e8851",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }

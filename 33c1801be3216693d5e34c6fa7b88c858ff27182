@@ -19,6 +19,41 @@
     },
     {
       "key": {
+        "uuid": "9a245df4_c7d77eec",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 104
+      },
+      "writtenOn": "2016-07-07T09:40:57Z",
+      "side": 1,
+      "message": "Not sure I follow the comment. Can you elaborate?",
+      "parentUuid": "9a245df4_a71fea08",
+      "revId": "33c1801be3216693d5e34c6fa7b88c858ff27182",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a245df4_27049a7d",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 10
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 104
+      },
+      "writtenOn": "2016-07-07T09:40:57Z",
+      "side": 1,
+      "message": "Why do we put paste.ini and policy.json in -common and not -api while it\u0027s used by the latter only?",
+      "revId": "33c1801be3216693d5e34c6fa7b88c858ff27182",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a245df4_e719e223",
         "filename": "openstack-designate.spec",
         "patchSetId": 10
@@ -30,6 +65,24 @@
       "writtenOn": "2016-07-07T08:06:49Z",
       "side": 1,
       "message": "ack for %files.",
+      "revId": "33c1801be3216693d5e34c6fa7b88c858ff27182",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a245df4_e7da8216",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 10
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 104
+      },
+      "writtenOn": "2016-07-07T09:40:57Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s wise to consider rootwrap files as config files. They are a part of the product and are not meant to be modified by users.",
+      "parentUuid": "9a245df4_e719e223",
       "revId": "33c1801be3216693d5e34c6fa7b88c858ff27182",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
