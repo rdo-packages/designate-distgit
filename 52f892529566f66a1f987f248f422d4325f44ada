@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a245df4_67e7b2e5",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-07-07T09:35:49Z",
+      "side": 1,
+      "message": "Is that pymod2pkg bug or rdopkg uses an old version?",
+      "parentUuid": "9a245df4_e70282b3",
+      "revId": "52f892529566f66a1f987f248f422d4325f44ada",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a245df4_c7ff7ea9",
         "filename": "openstack-designate.spec",
         "patchSetId": 1
