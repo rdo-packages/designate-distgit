@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenStack Designate Producer service
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=designate
+ExecStart=/usr/bin/designate-producer --config-file /etc/designate/designate.conf --log-file /var/log/designate/producer.log
+PrivateTmp=true
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
