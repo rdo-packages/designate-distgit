@@ -23,6 +23,8 @@ Source13:       designate-mdns.service
 Source14:       designate-pool-manager.service
 Source15:       designate-sink.service
 Source16:       designate-zone-manager.service
+Source17:       designate-producer.service
+Source18:       designate-worker.service
 
 BuildArch:      noarch
 
@@ -179,6 +181,19 @@ Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 This package contains OpenStack Designate Mini DNS service.
 
 
+%package producer
+Summary:        OpenStack Designate Producer service
+Group:          Applications/System
+
+Requires:       python-%{service} = %{epoch}:%{version}-%{release}
+
+
+%description producer
+%{common_desc}
+
+This package contains OpenStack Designate Producer service.
+
+
 %package pool-manager
 Summary:        OpenStack Designate Pool Manager service
 Group:          Applications/System
@@ -203,6 +218,19 @@ Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 %{common_desc}
 
 This package contains OpenStack Designate Sink service.
+
+
+%package worker
+Summary:        OpenStack Designate Worker service
+Group:          Applications/System
+
+Requires:       python-%{service} = %{epoch}:%{version}-%{release}
+
+
+%description worker
+%{common_desc}
+
+This package contains OpenStack Designate Worker service.
 
 
 %package zone-manager
@@ -263,6 +291,8 @@ install -p -D -m 644 %{SOURCE13} %{buildroot}%{_unitdir}/designate-mdns.service
 install -p -D -m 644 %{SOURCE14} %{buildroot}%{_unitdir}/designate-pool-manager.service
 install -p -D -m 644 %{SOURCE15} %{buildroot}%{_unitdir}/designate-sink.service
 install -p -D -m 644 %{SOURCE16} %{buildroot}%{_unitdir}/designate-zone-manager.service
+install -p -D -m 644 %{SOURCE17} %{buildroot}%{_unitdir}/designate-producer.service
+install -p -D -m 644 %{SOURCE18} %{buildroot}%{_unitdir}/designate-worker.service
 
 # Setup directories
 install -d -m 755 %{buildroot}%{_datadir}/%{service}
@@ -326,6 +356,18 @@ exit 0
 %systemd_postun_with_restart designate-mdns.service
 
 
+%post producer
+%systemd_post designate-producer.service
+
+
+%preun producer
+%systemd_preun designate-producer.service
+
+
+%postun producer
+%systemd_postun_with_restart designate-producer.service
+
+
 %post pool-manager
 %systemd_post designate-pool-manager.service
 
@@ -348,6 +390,18 @@ exit 0
 
 %postun sink
 %systemd_postun_with_restart designate-sink.service
+
+
+%post worker
+%systemd_post designate-worker.service
+
+
+%preun worker
+%systemd_preun designate-worker.service
+
+
+%postun worker
+%systemd_postun_with_restart designate-worker.service
 
 
 %preun zone-manager
@@ -413,6 +467,12 @@ exit 0
 %{_unitdir}/designate-mdns.service
 
 
+%files producer
+%license LICENSE
+%{_bindir}/designate-producer
+%{_unitdir}/designate-producer.service
+
+
 %files pool-manager
 %license LICENSE
 %{_bindir}/designate-pool-manager
@@ -423,6 +483,12 @@ exit 0
 %license LICENSE
 %{_bindir}/designate-sink
 %{_unitdir}/designate-sink.service
+
+
+%files worker
+%license LICENSE
+%{_bindir}/designate-worker
+%{_unitdir}/designate-worker.service
 
 
 %files zone-manager
