@@ -386,6 +386,8 @@ exit 0
 %dir %attr(0750, %{service}, %{service}) %{_localstatedir}/log/%{service}
 %{_bindir}/designate-rootwrap
 %{_bindir}/designate-manage
+%{_bindir}/designate-producer
+%{_bindir}/designate-worker
 
 
 %files agent
@@ -432,3 +434,4 @@ exit 0
 
 
 %changelog
+
