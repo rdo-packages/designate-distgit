@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facab960_4e74509c",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2016-09-15T14:55:43Z",
+      "side": 1,
+      "message": "It\u0027s \u003e\u003d 2.8 upstream.\n\n    https://github.com/openstack/designate/blob/773a60808fb96adcfe26f8161334ec237f6dcbca/requirements.txt#L9",
+      "revId": "d79c646e5d6ef0f8b5daf892b0b50b8aecfd0b56",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "facab960_8e6e58c8",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2016-09-15T14:55:43Z",
+      "side": 1,
+      "message": "It\u0027s \u003e\u003d 1.56 upstream.\n\n    https://github.com/openstack/designate/blob/773a60808fb96adcfe26f8161334ec237f6dcbca/requirements.txt#L47",
+      "revId": "d79c646e5d6ef0f8b5daf892b0b50b8aecfd0b56",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
