@@ -69,6 +69,24 @@
       "revId": "d79c646e5d6ef0f8b5daf892b0b50b8aecfd0b56",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "facab960_6ebbd4c4",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2016-09-15T16:38:48Z",
+      "side": 1,
+      "message": "Just for the record, we\u0027re not testing Designate yet anywhere in RDO CI -- although we want to I don\u0027t know if I\u0027ll have time to finish by release.",
+      "parentUuid": "facab960_4e8ff023",
+      "revId": "d79c646e5d6ef0f8b5daf892b0b50b8aecfd0b56",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
