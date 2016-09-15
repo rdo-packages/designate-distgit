@@ -1,3 +1,4 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
 
@@ -13,7 +14,7 @@ Group:          Applications/System
 License:        ASL 2.0
 URL:            http://launchpad.net/%{service}/
 
-Source0:        http://tarballs.openstack.org/%{service}/%{service}-master.tar.gz
+Source0:        https://tarballs.openstack.org/%{service}/%{service}-%{upstream_version}.tar.gz
 Source1:        %{service}.logrotate
 Source2:        %{service}-sudoers
 Source10:       designate-agent.service
