@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "facab960_2e738c4e",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 87
+      },
+      "writtenOn": "2016-09-15T16:35:56Z",
+      "side": 1,
+      "message": "it\u0027s 2.7 downstream.\n\nActually, we don\u0027t use any 2.8 specific features in openstack",
+      "parentUuid": "facab960_4e74509c",
+      "revId": "d79c646e5d6ef0f8b5daf892b0b50b8aecfd0b56",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "facab960_8e6e58c8",
         "filename": "openstack-designate.spec",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-09-15T14:55:43Z",
       "side": 1,
       "message": "It\u0027s \u003e\u003d 1.56 upstream.\n\n    https://github.com/openstack/designate/blob/773a60808fb96adcfe26f8161334ec237f6dcbca/requirements.txt#L47",
+      "revId": "d79c646e5d6ef0f8b5daf892b0b50b8aecfd0b56",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "facab960_4e8ff023",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 87
+      },
+      "writtenOn": "2016-09-15T16:35:56Z",
+      "side": 1,
+      "message": "ditto.\n\nUntil we phase out kilo, I can\u0027t update those unless they actually broke something (and until then downstream CI said no)",
+      "parentUuid": "facab960_8e6e58c8",
       "revId": "d79c646e5d6ef0f8b5daf892b0b50b8aecfd0b56",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
