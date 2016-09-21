@@ -1,4 +1,4 @@
-%global milestone .0b3
+%global milestone .0rc1
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
@@ -8,7 +8,7 @@ Name:           openstack-%{service}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        3.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        0.2%{?milestone}%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
@@ -17,7 +17,7 @@ URL:            http://launchpad.net/%{service}/
 
 Source0:        https://tarballs.openstack.org/%{service}/%{service}-%{upstream_version}.tar.gz
 #
-# patches_base=3.0.0.0b3
+# patches_base=3.0.0.0rc1
 #
 
 Source1:        %{service}.logrotate
@@ -504,6 +504,9 @@ exit 0
 
 
 %changelog
+* Wed Sep 21 2016 Haikel Guemar <hguemar@fedoraproject.org> 1:3.0.0-0.2.0b3
+- Update to 3.0.0.0rc1
+
 * Fri Sep 16 2016 Alfredo Moralejo <amoralej@redhat.com> 1:3.0.0-0.1
 - Update to 3.0.0.0b3
 
