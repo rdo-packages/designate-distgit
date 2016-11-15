@@ -36,7 +36,6 @@ BuildRequires:  python-setuptools
 BuildRequires:  systemd-units
 
 Requires:       python-%{service} = %{epoch}:%{version}-%{release}
-Requires:       openstack-utils
 
 Requires(pre): shadow-utils
 Requires(post): systemd
