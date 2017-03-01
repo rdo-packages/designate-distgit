@@ -6,8 +6,8 @@ Name:           openstack-%{service}
 # Liberty semver reset
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
-Version:        3.0.0
-Release:        2%{?dist}
+Version:        3.0.1
+Release:        1%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
@@ -498,6 +498,9 @@ exit 0
 
 
 %changelog
+* Wed Mar 01 2017 Alfredo Moralejo <amoralej@redhat.com> 1:3.0.1-1
+- Update to 3.0.1
+
 * Tue Nov 15 2016 David Moreau Simard <dmsimard@redhat.com> 1:3.0.0-2
 - Remove dependency on the openstack-utils package
 
