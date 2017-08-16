@@ -60,43 +60,43 @@ Requires:       python-flask >= 0.10
 Requires:       python-greenlet >= 0.3.2
 Requires:       python-jinja2 >= 2.7
 Requires:       python-jsonschema >= 2.0.0
-Requires:       python-keystoneauth1 >= 2.18.0
+Requires:       python-keystoneauth1 >= 3.1.0
 Requires:       python-keystonemiddleware >= 4.12.0
 Requires:       python-memcached >= 1.54
-Requires:       python-migrate >= 0.9.6
-Requires:       python-netaddr >= 0.7.12
-Requires:       python-neutronclient >= 5.1.0
+Requires:       python-netaddr >= 0.7.13
+Requires:       python-neutronclient >= 6.3.0
 Requires:       python-oslo-concurrency >= 3.8.0
-Requires:       python-oslo-config >= 2:3.14.0
-Requires:       python-oslo-context >= 2.9.0
-Requires:       python-oslo-db >= 4.15.0
+Requires:       python-oslo-config >= 2:4.0.0
+Requires:       python-oslo-context >= 2.14.0
+Requires:       python-oslo-db >= 4.24.0
 Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-log >= 3.11.0
-Requires:       python-oslo-messaging >= 5.14.0
-Requires:       python-oslo-middleware >= 3.0.0
-Requires:       python-oslo-policy >= 1.17.0
+Requires:       python-oslo-log >= 3.22.0
+Requires:       python-oslo-messaging >= 5.24.2
+Requires:       python-oslo-middleware >= 3.27.0
+Requires:       python-oslo-policy >= 1.23.0
 Requires:       python-oslo-reports >= 0.6.0
 Requires:       python-oslo-rootwrap >= 5.0.0
 Requires:       python-oslo-serialization >= 1.10.0
 Requires:       python-oslo-service >= 1.10.0
-Requires:       python-oslo-utils >= 3.18.0
-Requires:       python-os-win >= 1.4.0
+Requires:       python-oslo-utils >= 3.20.0
+Requires:       python-os-win >= 2.0.0
 Requires:       python-paste
 Requires:       python-paste-deploy >= 1.5.0
-Requires:       python-pbr >= 1.8
+Requires:       python-pbr >= 2.0.0
 Requires:       python-pecan >= 1.0.0
 Requires:       python-requests >= 2.10.0
-Requires:       python-retrying >= 1.2.3
-Requires:       python-routes >= 1.12.3
+Requires:       python-tenacity
 Requires:       python-six >= 1.9.0
 Requires:       python-sqlalchemy >= 1.0.10
-Requires:       python-migrate >= 0.9.6
-Requires:       python-stevedore >= 1.17.1
+Requires:       python-migrate >= 0.11.0
+Requires:       python-stevedore >= 1.20.0
 Requires:       python-suds >= 0.6
 Requires:       python-tooz >= 1.47.0
-Requires:       python-webob >= 1.6.0
+Requires:       python-webob >= 1.7.1
 Requires:       python-werkzeug >= 0.7
 Requires:       sudo
+# python-monasca-statsd is in requirements.txt but it's not packaged yet
+#Requires:       python-monasca-statsd
 
 
 %description -n python-%{service}
