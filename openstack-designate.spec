@@ -1,4 +1,3 @@
-%global milestone .0rc1
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
@@ -8,7 +7,7 @@ Name:           openstack-%{service}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        5.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
@@ -16,8 +15,6 @@ License:        ASL 2.0
 URL:            http://launchpad.net/%{service}/
 
 Source0:        https://tarballs.openstack.org/%{service}/%{service}-%{upstream_version}.tar.gz
-#
-# patches_base=5.0.0.0rc1
 #
 
 Source1:        %{service}.logrotate
@@ -505,6 +502,9 @@ exit 0
 
 
 %changelog
+* Wed Aug 30 2017 rdo-trunk <javier.pena@redhat.com> 1:5.0.0-1
+- Update to 5.0.0
+
 * Mon Aug 21 2017 Alfredo Moralejo <amoralej@redhat.com> 1:5.0.0-0.1.0rc1
 - Update to 5.0.0.0rc1
 
