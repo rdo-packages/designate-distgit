@@ -39,10 +39,7 @@ BuildRequires:  openstack-macros
 Requires:       python-%{service} = %{epoch}:%{version}-%{release}
 
 Requires(pre): shadow-utils
-Requires(post): systemd
-Requires(preun): systemd
-Requires(postun): systemd
-
+%{?systemd_requires}
 
 %description
 %{common_desc}
