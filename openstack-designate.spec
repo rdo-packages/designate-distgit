@@ -34,6 +34,7 @@ BuildRequires:  python-d2to1
 BuildRequires:  python-pbr
 BuildRequires:  python-setuptools
 BuildRequires:  systemd-units
+BuildRequires:  openstack-macros
 
 Requires:       python-%{service} = %{epoch}:%{version}-%{release}
 
@@ -254,7 +255,7 @@ This package contains OpenStack Designate Zone Manager service.
 find %{service} -name \*.py -exec sed -i '/\/usr\/bin\/env python/{d;q}' {} +
 
 # Let's handle dependencies ourselves
-rm -f requirements.txt
+%py_req_cleanup
 
 
 %build
