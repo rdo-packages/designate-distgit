@@ -272,7 +272,6 @@ rm -rf %{buildroot}%{python2_sitelib}/tools
 install -d -m 755 %{buildroot}%{_sysconfdir}/%{service}
 mv %{buildroot}/usr/etc/%{service}/%{service}.conf.sample %{buildroot}%{_sysconfdir}/%{service}/%{service}.conf
 mv %{buildroot}/usr/etc/%{service}/api-paste.ini %{buildroot}%{_sysconfdir}/%{service}/
-mv %{buildroot}/usr/etc/%{service}/policy.json %{buildroot}%{_sysconfdir}/%{service}/
 mv %{buildroot}/usr/etc/%{service}/rootwrap.conf.sample %{buildroot}%{_sysconfdir}/%{service}/rootwrap.conf
 install -d -m 755 %{buildroot}%{_datarootdir}/%{service}/rootwrap
 mv %{buildroot}/usr/etc/%{service}/rootwrap.d/*.filters %{buildroot}%{_datarootdir}/%{service}/rootwrap
@@ -427,9 +426,9 @@ exit 0
 %files common
 %license LICENSE
 %doc README.rst
+%doc etc/designate/policy.yaml.sample
 %dir %{_sysconfdir}/%{service}
 %config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/%{service}.conf
-%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/policy.json
 %config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/rootwrap.conf
 %dir %{_datarootdir}/%{service}
 %dir %{_datarootdir}/%{service}/rootwrap
