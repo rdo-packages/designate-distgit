@@ -35,6 +35,20 @@ BuildRequires:  python-pbr
 BuildRequires:  python-setuptools
 BuildRequires:  systemd-units
 BuildRequires:  openstack-macros
+# Required for config file generation
+BuildRequires:  python-jsonschema
+BuildRequires:  python-keystonemiddleware
+BuildRequires:  python-neutronclient
+BuildRequires:  python-oslo-concurrency
+BuildRequires:  python-oslo-config
+BuildRequires:  python-oslo-db
+BuildRequires:  python-oslo-log
+BuildRequires:  python-oslo-messaging
+BuildRequires:  python-oslo-middleware
+BuildRequires:  python-oslo-policy
+BuildRequires:  python-oslo-service
+BuildRequires:  python-os-win
+BuildRequires:  python-tooz
 
 Requires:       python-%{service} = %{epoch}:%{version}-%{release}
 
@@ -260,6 +274,9 @@ export PBR_VERSION=%{version}
 export SKIP_PIP_INSTALL=1
 %{__python2} setup.py build
 
+# Generate sample config
+PYTHONPATH=. oslo-config-generator --config-file=./etc/%{service}/%{service}-config-generator.conf
+
 %install
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
 
@@ -270,7 +287,7 @@ rm -rf %{buildroot}%{python2_sitelib}/tools
 
 # Move config files to proper location
 install -d -m 755 %{buildroot}%{_sysconfdir}/%{service}
-mv %{buildroot}/usr/etc/%{service}/%{service}.conf.sample %{buildroot}%{_sysconfdir}/%{service}/%{service}.conf
+install -p -D -m 644 etc/%{service}/%{service}.conf %{buildroot}%{_sysconfdir}/%{service}/%{service}.conf
 mv %{buildroot}/usr/etc/%{service}/api-paste.ini %{buildroot}%{_sysconfdir}/%{service}/
 mv %{buildroot}/usr/etc/%{service}/rootwrap.conf.sample %{buildroot}%{_sysconfdir}/%{service}/rootwrap.conf
 install -d -m 755 %{buildroot}%{_datarootdir}/%{service}/rootwrap
