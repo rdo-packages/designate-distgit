@@ -8,7 +8,7 @@ Name:           openstack-%{service}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        6.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        0.2%{?milestone}%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
@@ -52,6 +52,7 @@ BuildRequires:  python2-oslo-messaging
 BuildRequires:  python2-oslo-middleware
 BuildRequires:  python2-oslo-policy
 BuildRequires:  python2-oslo-service
+BuildRequires:  python2-oslo-versionedobjects >= 1.31.2
 BuildRequires:  python2-os-win
 BuildRequires:  python2-tooz
 BuildRequires:  python2-dns
@@ -98,6 +99,7 @@ Requires:       python2-oslo-serialization >= 2.18.0
 Requires:       python2-oslo-service >= 1.24.0
 Requires:       python2-oslo-utils >= 3.33.0
 Requires:       python2-os-win >= 3.0.0
+Requires:       python2-oslo-versionedobjects >= 1.31.2
 Requires:       python-paste
 Requires:       python-paste-deploy >= 1.5.0
 Requires:       python2-pbr >= 2.0.0
@@ -520,6 +522,9 @@ exit 0
 
 
 %changelog
+* Sun Feb 25 2018 Charles Short <zulcss@gmail.com> 1:6.0.0-0.2.0rc1
+- Add missing python2-oslo-versionedobjects dependency.
+
 * Thu Feb 15 2018 RDO <dev@lists.rdoproject.org> 1:6.0.0-0.1.0rc1
 - Update to 6.0.0.0rc1
 
