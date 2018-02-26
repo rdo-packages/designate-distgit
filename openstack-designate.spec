@@ -47,6 +47,7 @@ BuildRequires:  python2-oslo-messaging
 BuildRequires:  python2-oslo-middleware
 BuildRequires:  python2-oslo-policy
 BuildRequires:  python2-oslo-service
+BuildRequires:  python2-oslo-versionedobjects
 BuildRequires:  python2-os-win
 BuildRequires:  python2-tooz
 BuildRequires:  python2-dns
@@ -93,6 +94,7 @@ Requires:       python2-oslo-serialization >= 2.18.0
 Requires:       python2-oslo-service >= 1.24.0
 Requires:       python2-oslo-utils >= 3.33.0
 Requires:       python2-os-win >= 3.0.0
+Requires:       python2-oslo-versionedobjects >= 1.31.2
 Requires:       python-paste
 Requires:       python-paste-deploy >= 1.5.0
 Requires:       python2-pbr >= 2.0.0
