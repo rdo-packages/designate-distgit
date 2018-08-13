@@ -72,15 +72,15 @@ Requires:       python2-dns >= 1.14.0
 Requires:       python2-eventlet >= 0.18.2
 Requires:       python-flask >= 0.10
 Requires:       python2-greenlet >= 0.4.10
-Requires:       python2-jinja2 >= 2.8
+Requires:       python2-jinja2 >= 2.10
 Requires:       python2-jsonschema >= 2.6.0
-Requires:       python2-keystoneauth1 >= 3.3.0
+Requires:       python2-keystoneauth1 >= 3.4.0
 Requires:       python2-keystonemiddleware >= 4.17.0
 Requires:       python-memcached >= 1.56
 Requires:       python2-netaddr >= 0.7.18
-Requires:       python2-neutronclient >= 6.3.0
-Requires:       python2-oslo-concurrency >= 3.25.0
-Requires:       python2-oslo-config >= 2:5.1.0
+Requires:       python2-neutronclient >= 6.7.0
+Requires:       python2-oslo-concurrency >= 3.26.0
+Requires:       python2-oslo-config >= 2:5.2.0
 Requires:       python2-oslo-context >= 2.19.2
 Requires:       python2-oslo-db >= 4.27.0
 Requires:       python2-oslo-i18n >= 3.15.3
@@ -108,7 +108,7 @@ Requires:       python2-stevedore >= 1.20.0
 Requires:       python2-suds >= 0.6
 Requires:       python2-tooz >= 1.58.0
 Requires:       python-webob >= 1.7.1
-Requires:       python-werkzeug >= 0.7
+Requires:       python-werkzeug >= 0.9
 Requires:       sudo
 # python2-monasca-statsd is in requirements.txt but it's not packaged yet
 #Requires:       python2-monasca-statsd
