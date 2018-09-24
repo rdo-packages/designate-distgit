@@ -1,3 +1,14 @@
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
+%endif
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
+# End of macros for py2/py3 compatibility
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
@@ -29,30 +40,36 @@ Source18:       designate-worker.service
 
 BuildArch:      noarch
 
-BuildRequires:  python2-devel
-BuildRequires:  python-d2to1
-BuildRequires:  python2-pbr
-BuildRequires:  python2-setuptools
+BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-pbr
+BuildRequires:  python%{pyver}-setuptools
 BuildRequires:  systemd
 BuildRequires:  openstack-macros
 # Required for config file generation
-BuildRequires:  python2-jsonschema
-BuildRequires:  python2-keystonemiddleware
-BuildRequires:  python2-neutronclient
-BuildRequires:  python2-oslo-concurrency
-BuildRequires:  python2-oslo-config
-BuildRequires:  python2-oslo-db
-BuildRequires:  python2-oslo-log
-BuildRequires:  python2-oslo-messaging
-BuildRequires:  python2-oslo-middleware
-BuildRequires:  python2-oslo-policy
-BuildRequires:  python2-oslo-service
-BuildRequires:  python2-oslo-versionedobjects
-BuildRequires:  python2-os-win
-BuildRequires:  python2-tooz
-BuildRequires:  python2-dns
+BuildRequires:  python%{pyver}-jsonschema
+BuildRequires:  python%{pyver}-keystonemiddleware
+BuildRequires:  python%{pyver}-neutronclient
+BuildRequires:  python%{pyver}-oslo-concurrency
+BuildRequires:  python%{pyver}-oslo-config
+BuildRequires:  python%{pyver}-oslo-db
+BuildRequires:  python%{pyver}-oslo-log
+BuildRequires:  python%{pyver}-oslo-messaging
+BuildRequires:  python%{pyver}-oslo-middleware
+BuildRequires:  python%{pyver}-oslo-policy
+BuildRequires:  python%{pyver}-oslo-service
+BuildRequires:  python%{pyver}-oslo-versionedobjects
+BuildRequires:  python%{pyver}-os-win
+BuildRequires:  python%{pyver}-tooz
+BuildRequires:  python%{pyver}-dns
 
-Requires:       python-%{service} = %{epoch}:%{version}-%{release}
+# Handle python2 exception
+%if %{pyver} == 2
+BuildRequires:  python-d2to1
+%else
+BuildRequires:  python%{pyver}-d2to1
+%endif
+
+Requires:       python%{pyver}-%{service} = %{epoch}:%{version}-%{release}
 
 Requires(pre): shadow-utils
 %{?systemd_requires}
@@ -61,73 +78,85 @@ Requires(pre): shadow-utils
 %{common_desc}
 
 
-%package -n python-%{service}
+%package -n python%{pyver}-%{service}
 Summary:        Designate Python libraries
+%{?python_provide:%python_provide python%{pyver}-%{service}}
 Group:          Applications/System
 
-Requires:       python2-babel >= 2.3.4
-Requires:       python2-debtcollector >= 1.2.0
-Requires:       python2-designateclient >= 2.7.0
-Requires:       python2-dns >= 1.14.0
-Requires:       python2-eventlet >= 0.18.2
-Requires:       python-flask >= 0.10
-Requires:       python2-greenlet >= 0.4.10
-Requires:       python2-jinja2 >= 2.10
-Requires:       python2-jsonschema >= 2.6.0
-Requires:       python2-keystoneauth1 >= 3.4.0
-Requires:       python2-keystonemiddleware >= 4.17.0
-Requires:       python-memcached >= 1.56
-Requires:       python2-netaddr >= 0.7.18
-Requires:       python2-neutronclient >= 6.7.0
-Requires:       python2-oslo-concurrency >= 3.26.0
-Requires:       python2-oslo-config >= 2:5.2.0
-Requires:       python2-oslo-context >= 2.19.2
-Requires:       python2-oslo-db >= 4.27.0
-Requires:       python2-oslo-i18n >= 3.15.3
-Requires:       python2-oslo-log >= 3.36.0
-Requires:       python2-oslo-messaging >= 5.29.0
-Requires:       python2-oslo-middleware >= 3.31.0
-Requires:       python2-oslo-policy >= 1.30.0
-Requires:       python2-oslo-reports >= 1.18.0
-Requires:       python2-oslo-rootwrap >= 5.8.0
-Requires:       python2-oslo-serialization >= 2.18.0
-Requires:       python2-oslo-service >= 1.24.0
-Requires:       python2-oslo-utils >= 3.33.0
-Requires:       python2-os-win >= 3.0.0
-Requires:       python2-oslo-versionedobjects >= 1.31.2
-Requires:       python-paste
-Requires:       python-paste-deploy >= 1.5.0
-Requires:       python2-pbr >= 2.0.0
-Requires:       python2-pecan >= 1.0.0
-Requires:       python2-requests >= 2.14.2
-Requires:       python2-tenacity
-Requires:       python2-six >= 1.10.0
-Requires:       python2-sqlalchemy >= 1.0.10
-Requires:       python-migrate >= 0.11.0
-Requires:       python2-stevedore >= 1.20.0
-Requires:       python2-suds >= 0.6
-Requires:       python2-tooz >= 1.58.0
-Requires:       python-webob >= 1.7.1
-Requires:       python-werkzeug >= 0.9
+Requires:       python%{pyver}-babel >= 2.3.4
+Requires:       python%{pyver}-debtcollector >= 1.2.0
+Requires:       python%{pyver}-designateclient >= 2.7.0
+Requires:       python%{pyver}-dns >= 1.14.0
+Requires:       python%{pyver}-eventlet >= 0.18.2
+Requires:       python%{pyver}-greenlet >= 0.4.10
+Requires:       python%{pyver}-jinja2 >= 2.10
+Requires:       python%{pyver}-jsonschema >= 2.6.0
+Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
+Requires:       python%{pyver}-keystonemiddleware >= 4.17.0
+Requires:       python%{pyver}-netaddr >= 0.7.18
+Requires:       python%{pyver}-neutronclient >= 6.7.0
+Requires:       python%{pyver}-oslo-concurrency >= 3.26.0
+Requires:       python%{pyver}-oslo-config >= 2:5.2.0
+Requires:       python%{pyver}-oslo-context >= 2.19.2
+Requires:       python%{pyver}-oslo-db >= 4.27.0
+Requires:       python%{pyver}-oslo-i18n >= 3.15.3
+Requires:       python%{pyver}-oslo-log >= 3.36.0
+Requires:       python%{pyver}-oslo-messaging >= 5.29.0
+Requires:       python%{pyver}-oslo-middleware >= 3.31.0
+Requires:       python%{pyver}-oslo-policy >= 1.30.0
+Requires:       python%{pyver}-oslo-reports >= 1.18.0
+Requires:       python%{pyver}-oslo-rootwrap >= 5.8.0
+Requires:       python%{pyver}-oslo-serialization >= 2.18.0
+Requires:       python%{pyver}-oslo-service >= 1.24.0
+Requires:       python%{pyver}-oslo-utils >= 3.33.0
+Requires:       python%{pyver}-os-win >= 3.0.0
+Requires:       python%{pyver}-oslo-versionedobjects >= 1.31.2
+Requires:       python%{pyver}-pbr >= 2.0.0
+Requires:       python%{pyver}-pecan >= 1.0.0
+Requires:       python%{pyver}-requests >= 2.14.2
+Requires:       python%{pyver}-tenacity
+Requires:       python%{pyver}-six >= 1.10.0
+Requires:       python%{pyver}-sqlalchemy >= 1.0.10
+Requires:       python%{pyver}-stevedore >= 1.20.0
+Requires:       python%{pyver}-suds >= 0.6
+Requires:       python%{pyver}-tooz >= 1.58.0
+Requires:       python%{pyver}-webob >= 1.7.1
+Requires:       python%{pyver}-werkzeug >= 0.9
 Requires:       sudo
 # python2-monasca-statsd is in requirements.txt but it's not packaged yet
-#Requires:       python2-monasca-statsd
+#Requires:       python%{pyver}-monasca-statsd
+
+# Handle python2 exception
+%if %{pyver} == 2
+Requires:       python-flask >= 0.10
+Requires:       python-memcached >= 1.56
+Requires:       python-paste
+Requires:       python-paste-deploy >= 1.5.0
+Requires:       python-migrate >= 0.11.0
+%else
+Requires:       python%{pyver}-flask >= 0.10
+Requires:       python%{pyver}-memcached >= 1.56
+Requires:       python%{pyver}-paste
+Requires:       python%{pyver}-paste-deploy >= 1.5.0
+Requires:       python%{pyver}-migrate >= 0.11.0
+%endif
 
 
-%description -n python-%{service}
+%description -n python%{pyver}-%{service}
 %{common_desc}
 
 This package contains the Designate Python library.
 
 
-%package -n python-%{service}-tests
+%package -n python%{pyver}-%{service}-tests
 Summary:        Designate tests
+%{?python_provide:%python_provide python%{pyver}-%{service}-tests}
 Group:          Applications/System
 
-Requires:       python-%{service} = %{epoch}:%{version}-%{release}
+Requires:       python%{pyver}-%{service} = %{epoch}:%{version}-%{release}
 
 
-%description -n python-%{service}-tests
+%description -n python%{pyver}-%{service}-tests
 %{common_desc}
 
 This package contains Designate test files.
@@ -137,7 +166,7 @@ This package contains Designate test files.
 Summary:        Designate common files
 Group:          Applications/System
 
-Requires:       python-%{service} = %{epoch}:%{version}-%{release}
+Requires:       python%{pyver}-%{service} = %{epoch}:%{version}-%{release}
 
 
 %description common
@@ -275,18 +304,18 @@ find %{service} -name \*.py -exec sed -i '/\/usr\/bin\/env python/{d;q}' {} +
 %build
 export PBR_VERSION=%{version}
 export SKIP_PIP_INSTALL=1
-%{__python2} setup.py build
+%{pyver_build}
 
 # Generate sample config
-PYTHONPATH=. oslo-config-generator --config-file=./etc/%{service}/%{service}-config-generator.conf
+PYTHONPATH=. oslo-config-generator-%{pyver} --config-file=./etc/%{service}/%{service}-config-generator.conf
 
 %install
-%{__python2} setup.py install -O1 --skip-build --root %{buildroot}
+%{pyver_install}
 
 # Remove unused files
-rm -rf %{buildroot}%{python2_sitelib}/bin
-rm -rf %{buildroot}%{python2_sitelib}/doc
-rm -rf %{buildroot}%{python2_sitelib}/tools
+rm -rf %{buildroot}%{pyver_sitelib}/bin
+rm -rf %{buildroot}%{pyver_sitelib}/doc
+rm -rf %{buildroot}%{pyver_sitelib}/tools
 
 # Move config files to proper location
 install -d -m 755 %{buildroot}%{_sysconfdir}/%{service}
@@ -431,16 +460,16 @@ exit 0
 %systemd_postun_with_restart designate-zone-manager.service
 
 
-%files -n python-%{service}-tests
+%files -n python%{pyver}-%{service}-tests
 %license LICENSE
-%{python2_sitelib}/%{service}/tests
+%{pyver_sitelib}/%{service}/tests
 
 
-%files -n python-%{service}
+%files -n python%{pyver}-%{service}
 %license LICENSE
-%{python2_sitelib}/%{service}
-%{python2_sitelib}/%{service}-*.egg-info
-%exclude %{python2_sitelib}/%{service}/tests
+%{pyver_sitelib}/%{service}
+%{pyver_sitelib}/%{service}-*.egg-info
+%exclude %{pyver_sitelib}/%{service}/tests
 
 
 %files common
