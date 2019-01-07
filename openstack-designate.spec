@@ -57,6 +57,7 @@ BuildRequires:  python%{pyver}-oslo-messaging
 BuildRequires:  python%{pyver}-oslo-middleware
 BuildRequires:  python%{pyver}-oslo-policy
 BuildRequires:  python%{pyver}-oslo-service
+BuildRequires:  python%{pyver}-oslo-upgradecheck
 BuildRequires:  python%{pyver}-oslo-versionedobjects
 BuildRequires:  python%{pyver}-os-win
 BuildRequires:  python%{pyver}-tooz
@@ -113,6 +114,7 @@ Requires:       python%{pyver}-oslo-rootwrap >= 5.8.0
 Requires:       python%{pyver}-oslo-serialization >= 2.18.0
 Requires:       python%{pyver}-oslo-service >= 1.24.0
 Requires:       python%{pyver}-oslo-utils >= 3.33.0
+Requires:       python%{pyver}-oslo-upgradecheck >= 0.1.0
 Requires:       python%{pyver}-os-win >= 3.0.0
 Requires:       python%{pyver}-oslo-versionedobjects >= 1.31.2
 Requires:       python%{pyver}-pbr >= 2.0.0
@@ -492,6 +494,7 @@ exit 0
 %dir %attr(0750, %{service}, %{service}) %{_localstatedir}/log/%{service}
 %{_bindir}/designate-rootwrap
 %{_bindir}/designate-manage
+%{_bindir}/designate-status
 
 
 %files agent
