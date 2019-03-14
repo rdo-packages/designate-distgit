@@ -128,6 +128,7 @@ Requires:       python%{pyver}-suds >= 0.6
 Requires:       python%{pyver}-tooz >= 1.58.0
 Requires:       python%{pyver}-webob >= 1.7.1
 Requires:       python%{pyver}-werkzeug >= 0.9
+Requires:       python%{pyver}-futurist
 Requires:       sudo
 # python2-monasca-statsd is in requirements.txt but it's not packaged yet
 #Requires:       python%{pyver}-monasca-statsd
