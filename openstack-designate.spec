@@ -1,3 +1,4 @@
+%global milestone .0rc1
 # Macros for py2/py3 compatibility
 %if 0%{?fedora} || 0%{?rhel} > 7
 %global pyver %{python3_pkgversion}
@@ -9,11 +10,7 @@
 %global pyver_install %py%{pyver}_install
 %global pyver_build %py%{pyver}_build
 # End of macros for py2/py3 compatibility
-%{!?upstream_version: %global upstream_version %{commit}}
-%global commit 4d47719b2638a96f0f2b5f71ddb0e94619fa3980
-%global shortcommit %(c=%{commit}; echo ${c:0:7})
-# DO NOT REMOVE ALPHATAG
-%global alphatag .%{shortcommit}git
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
 
@@ -21,24 +18,26 @@ Name:           openstack-%{service}
 # Liberty semver reset
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
-Version:        8.0.0
-Release:        2%{?alphatag}%{?dist}
+Version:        9.0.0
+Release:        0.1%{?milestone}%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
 License:        ASL 2.0
 URL:            http://launchpad.net/%{service}/
 
-Source0:        https://github.com/openstack/%{service}/archive/%{upstream_version}.tar.gz#/%{service}-%{shortcommit}.tar.gz
+Source0:        https://tarballs.openstack.org/%{service}/%{service}-%{upstream_version}.tar.gz
+#
+# patches_base=9.0.0.0rc1
+#
+
 Source1:        %{service}.logrotate
 Source2:        %{service}-sudoers
 Source10:       designate-agent.service
 Source11:       designate-api.service
 Source12:       designate-central.service
 Source13:       designate-mdns.service
-Source14:       designate-pool-manager.service
 Source15:       designate-sink.service
-Source16:       designate-zone-manager.service
 Source17:       designate-producer.service
 Source18:       designate-worker.service
 
@@ -242,6 +241,8 @@ This package contains OpenStack Designate Mini DNS service.
 %package producer
 Summary:        OpenStack Designate Producer service
 Group:          Applications/System
+Obsoletes:      openstack-designate-pool-manager < 9.0.0
+Obsoletes:      openstack-designate-zone-manager < 9.0.0
 
 Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 
@@ -250,19 +251,6 @@ Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 %{common_desc}
 
 This package contains OpenStack Designate Producer service.
-
-
-%package pool-manager
-Summary:        OpenStack Designate Pool Manager service
-Group:          Applications/System
-
-Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
-
-
-%description pool-manager
-%{common_desc}
-
-This package contains OpenStack Designate Pool Manager service.
 
 
 %package sink
@@ -289,19 +277,6 @@ Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 %{common_desc}
 
 This package contains OpenStack Designate Worker service.
-
-
-%package zone-manager
-Summary:        OpenStack Designate Zone Manager service
-Group:          Applications/System
-
-Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
-
-
-%description zone-manager
-%{common_desc}
-
-This package contains OpenStack Designate Zone Manager service.
 
 
 %prep
@@ -348,9 +323,7 @@ install -p -D -m 644 %{SOURCE10} %{buildroot}%{_unitdir}/designate-agent.service
 install -p -D -m 644 %{SOURCE11} %{buildroot}%{_unitdir}/designate-api.service
 install -p -D -m 644 %{SOURCE12} %{buildroot}%{_unitdir}/designate-central.service
 install -p -D -m 644 %{SOURCE13} %{buildroot}%{_unitdir}/designate-mdns.service
-install -p -D -m 644 %{SOURCE14} %{buildroot}%{_unitdir}/designate-pool-manager.service
 install -p -D -m 644 %{SOURCE15} %{buildroot}%{_unitdir}/designate-sink.service
-install -p -D -m 644 %{SOURCE16} %{buildroot}%{_unitdir}/designate-zone-manager.service
 install -p -D -m 644 %{SOURCE17} %{buildroot}%{_unitdir}/designate-producer.service
 install -p -D -m 644 %{SOURCE18} %{buildroot}%{_unitdir}/designate-worker.service
 
@@ -428,18 +401,6 @@ exit 0
 %systemd_postun_with_restart designate-producer.service
 
 
-%post pool-manager
-%systemd_post designate-pool-manager.service
-
-
-%preun pool-manager
-%systemd_preun designate-pool-manager.service
-
-
-%postun pool-manager
-%systemd_postun_with_restart designate-pool-manager.service
-
-
 %post sink
 %systemd_post designate-sink.service
 
@@ -462,14 +423,6 @@ exit 0
 
 %postun worker
 %systemd_postun_with_restart designate-worker.service
-
-
-%preun zone-manager
-%systemd_preun designate-zone-manager.service
-
-
-%postun zone-manager
-%systemd_postun_with_restart designate-zone-manager.service
 
 
 %files -n python%{pyver}-%{service}-tests
@@ -534,12 +487,6 @@ exit 0
 %{_unitdir}/designate-producer.service
 
 
-%files pool-manager
-%license LICENSE
-%{_bindir}/designate-pool-manager
-%{_unitdir}/designate-pool-manager.service
-
-
 %files sink
 %license LICENSE
 %{_bindir}/designate-sink
@@ -552,12 +499,9 @@ exit 0
 %{_unitdir}/designate-worker.service
 
 
-%files zone-manager
-%license LICENSE
-%{_bindir}/designate-zone-manager
-%{_unitdir}/designate-zone-manager.service
-
-
 %changelog
+* Fri Oct 11 2019 RDO <dev@lists.rdoproject.org> 1:9.0.0-0.1.0rc1
+- Update to 9.0.0.0rc1
+
 * Tue Oct 08 2019 Yatin Karel <ykarel@redhat.com> 8.0.0-2.4d47719git
 - Update to post 8.0.0 (4d47719b2638a96f0f2b5f71ddb0e94619fa3980)
