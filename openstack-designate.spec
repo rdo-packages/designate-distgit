@@ -9,7 +9,11 @@
 %global pyver_install %py%{pyver}_install
 %global pyver_build %py%{pyver}_build
 # End of macros for py2/py3 compatibility
-%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%{!?upstream_version: %global upstream_version %{commit}}
+%global commit 4d47719b2638a96f0f2b5f71ddb0e94619fa3980
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+# DO NOT REMOVE ALPHATAG
+%global alphatag .%{shortcommit}git
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
 
@@ -17,15 +21,15 @@ Name:           openstack-%{service}
 # Liberty semver reset
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
-Version:        XXX
-Release:        XXX
+Version:        8.0.0
+Release:        2%{?alphatag}%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
 License:        ASL 2.0
 URL:            http://launchpad.net/%{service}/
 
-Source0:        https://tarballs.openstack.org/%{service}/%{service}-%{upstream_version}.tar.gz
+Source0:        https://github.com/openstack/%{service}/archive/%{upstream_version}.tar.gz#/%{service}-%{shortcommit}.tar.gz
 Source1:        %{service}.logrotate
 Source2:        %{service}-sudoers
 Source10:       designate-agent.service
@@ -554,3 +558,5 @@ exit 0
 
 
 %changelog
+* Tue Oct 08 2019 Yatin Karel <ykarel@redhat.com> 8.0.0-2.4d47719git
+- Update to post 8.0.0 (4d47719b2638a96f0f2b5f71ddb0e94619fa3980)
