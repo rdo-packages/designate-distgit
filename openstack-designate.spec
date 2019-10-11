@@ -32,9 +32,7 @@ Source10:       designate-agent.service
 Source11:       designate-api.service
 Source12:       designate-central.service
 Source13:       designate-mdns.service
-Source14:       designate-pool-manager.service
 Source15:       designate-sink.service
-Source16:       designate-zone-manager.service
 Source17:       designate-producer.service
 Source18:       designate-worker.service
 
@@ -237,6 +235,8 @@ This package contains OpenStack Designate Mini DNS service.
 %package producer
 Summary:        OpenStack Designate Producer service
 Group:          Applications/System
+Obsoletes:      openstack-designate-pool-manager < 9.0.0
+Obsoletes:      openstack-designate-zone-manager < 9.0.0
 
 Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 
@@ -245,19 +245,6 @@ Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 %{common_desc}
 
 This package contains OpenStack Designate Producer service.
-
-
-%package pool-manager
-Summary:        OpenStack Designate Pool Manager service
-Group:          Applications/System
-
-Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
-
-
-%description pool-manager
-%{common_desc}
-
-This package contains OpenStack Designate Pool Manager service.
 
 
 %package sink
@@ -284,19 +271,6 @@ Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 %{common_desc}
 
 This package contains OpenStack Designate Worker service.
-
-
-%package zone-manager
-Summary:        OpenStack Designate Zone Manager service
-Group:          Applications/System
-
-Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
-
-
-%description zone-manager
-%{common_desc}
-
-This package contains OpenStack Designate Zone Manager service.
 
 
 %prep
@@ -343,9 +317,7 @@ install -p -D -m 644 %{SOURCE10} %{buildroot}%{_unitdir}/designate-agent.service
 install -p -D -m 644 %{SOURCE11} %{buildroot}%{_unitdir}/designate-api.service
 install -p -D -m 644 %{SOURCE12} %{buildroot}%{_unitdir}/designate-central.service
 install -p -D -m 644 %{SOURCE13} %{buildroot}%{_unitdir}/designate-mdns.service
-install -p -D -m 644 %{SOURCE14} %{buildroot}%{_unitdir}/designate-pool-manager.service
 install -p -D -m 644 %{SOURCE15} %{buildroot}%{_unitdir}/designate-sink.service
-install -p -D -m 644 %{SOURCE16} %{buildroot}%{_unitdir}/designate-zone-manager.service
 install -p -D -m 644 %{SOURCE17} %{buildroot}%{_unitdir}/designate-producer.service
 install -p -D -m 644 %{SOURCE18} %{buildroot}%{_unitdir}/designate-worker.service
 
@@ -423,18 +395,6 @@ exit 0
 %systemd_postun_with_restart designate-producer.service
 
 
-%post pool-manager
-%systemd_post designate-pool-manager.service
-
-
-%preun pool-manager
-%systemd_preun designate-pool-manager.service
-
-
-%postun pool-manager
-%systemd_postun_with_restart designate-pool-manager.service
-
-
 %post sink
 %systemd_post designate-sink.service
 
@@ -457,14 +417,6 @@ exit 0
 
 %postun worker
 %systemd_postun_with_restart designate-worker.service
-
-
-%preun zone-manager
-%systemd_preun designate-zone-manager.service
-
-
-%postun zone-manager
-%systemd_postun_with_restart designate-zone-manager.service
 
 
 %files -n python%{pyver}-%{service}-tests
@@ -496,6 +448,7 @@ exit 0
 %{_bindir}/designate-rootwrap
 %{_bindir}/designate-manage
 %{_bindir}/designate-status
+%{_bindir}/designate-api-wsgi
 
 
 %files agent
@@ -529,12 +482,6 @@ exit 0
 %{_unitdir}/designate-producer.service
 
 
-%files pool-manager
-%license LICENSE
-%{_bindir}/designate-pool-manager
-%{_unitdir}/designate-pool-manager.service
-
-
 %files sink
 %license LICENSE
 %{_bindir}/designate-sink
@@ -545,12 +492,6 @@ exit 0
 %license LICENSE
 %{_bindir}/designate-worker
 %{_unitdir}/designate-worker.service
-
-
-%files zone-manager
-%license LICENSE
-%{_bindir}/designate-zone-manager
-%{_unitdir}/designate-zone-manager.service
 
 
 %changelog
