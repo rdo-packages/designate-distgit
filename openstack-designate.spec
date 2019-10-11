@@ -495,3 +495,4 @@ exit 0
 
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/designate/commit/?id=4d47719b2638a96f0f2b5f71ddb0e94619fa3980
