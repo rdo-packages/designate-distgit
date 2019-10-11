@@ -505,3 +505,4 @@ exit 0
 
 * Tue Oct 08 2019 Yatin Karel <ykarel@redhat.com> 8.0.0-2.4d47719git
 - Update to post 8.0.0 (4d47719b2638a96f0f2b5f71ddb0e94619fa3980)
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/designate/commit/?id=4d47719b2638a96f0f2b5f71ddb0e94619fa3980
