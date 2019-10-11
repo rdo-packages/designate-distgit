@@ -19,7 +19,7 @@ Name:           openstack-%{service}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        9.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        0.2%{?milestone}%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
@@ -500,6 +500,9 @@ exit 0
 
 
 %changelog
+* Fri Oct 11 2019 Alfredo Moralejo <amoralej@redhat.com> 1:9.0.0-0.2.0rc1
+- Force rebuild in CBS.
+
 * Fri Oct 11 2019 RDO <dev@lists.rdoproject.org> 1:9.0.0-0.1.0rc1
 - Update to 9.0.0.0rc1
 
