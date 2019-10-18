@@ -64,13 +64,6 @@ BuildRequires:  python%{pyver}-os-win
 BuildRequires:  python%{pyver}-tooz
 BuildRequires:  python%{pyver}-dns
 
-# Handle python2 exception
-%if %{pyver} == 2
-BuildRequires:  python-d2to1
-%else
-BuildRequires:  python%{pyver}-d2to1
-%endif
-
 Requires:       python%{pyver}-%{service} = %{epoch}:%{version}-%{release}
 
 Requires(pre): shadow-utils
