@@ -68,10 +68,9 @@ Summary:        Designate Python libraries
 %{?python_provide:%python_provide python3-%{service}}
 Group:          Applications/System
 
-Requires:       python3-babel >= 2.3.4
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-designateclient >= 2.7.0
-Requires:       python3-dns >= 1.12.0
+Requires:       python3-dns >= 1.15.0
 Requires:       python3-eventlet >= 0.25.1
 Requires:       python3-greenlet >= 0.4.10
 Requires:       python3-jinja2 >= 2.10
@@ -111,7 +110,7 @@ Requires:       python3-werkzeug >= 0.9
 Requires:       python3-futurist
 Requires:       python3-edgegrid >= 1.1.1
 Requires:       sudo
-# python2-monasca-statsd is in requirements.txt but it's not packaged yet
+# python3-monasca-statsd is in requirements.txt but it's not packaged yet
 #Requires:       python3-monasca-statsd
 
 Requires:       python3-flask >= 0.10
