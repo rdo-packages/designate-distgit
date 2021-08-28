@@ -484,3 +484,4 @@ exit 0
 
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/openstack/designate/commit/d65faea1d540da4d0f600f5c969098eae53842cd
