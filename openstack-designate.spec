@@ -124,7 +124,7 @@ Requires:       sudo
 # python3-monasca-statsd is in requirements.txt but it's not packaged yet
 #Requires:       python3-monasca-statsd
 
-Requires:       python3-flask >= 0.10
+Requires:       python3-flask >= 1:0.10
 Requires:       python3-memcached >= 1.56
 Requires:       python3-paste >= 2.0.2
 Requires:       python3-paste-deploy >= 1.5.0
