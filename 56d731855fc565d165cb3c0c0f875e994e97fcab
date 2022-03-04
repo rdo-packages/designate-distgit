@@ -16,6 +16,24 @@
       "message": "we use python3-dns and python3-greenlet from centos repos in CS8:\n\npython3-dns.noarch               1.15.0-10.el8                  baseos\npython3-greenlet.x86_64          0.4.13-4.el8                   appstream\n\nI don\u0027t want to update those deps in RDO deps repo for cs8 unless it\u0027s strongly justified. Is there any justification in the commits which update the minimal version upstream?\n\n",
       "revId": "56d731855fc565d165cb3c0c0f875e994e97fcab",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c12aa3_5147daf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 757
+      },
+      "writtenOn": "2022-03-04T18:12:11Z",
+      "side": 1,
+      "message": "https://opendev.org/openstack/designate/commit/57858d9121f1a0848392a56cb86a958b71deb168\nhttps://opendev.org/openstack/designate/commit/28037784eb4c2546bbe61e1a8bb7d34a2b8301f3\n\nIn fact those are not very crucial and not latest. Maybe there is no need to update it now.",
+      "parentUuid": "e6a6fd2f_c7ad9d59",
+      "revId": "56d731855fc565d165cb3c0c0f875e994e97fcab",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
