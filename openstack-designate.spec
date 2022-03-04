@@ -82,9 +82,9 @@ Group:          Applications/System
 
 Requires:       python3-debtcollector >= 1.19.0
 Requires:       python3-designateclient >= 2.12.0
-Requires:       python3-dns >= 1.15.0
+Requires:       python3-dns >= 1.16.0
 Requires:       python3-eventlet >= 0.26.1
-Requires:       python3-greenlet >= 0.4.13
+Requires:       python3-greenlet >= 0.4.15
 Requires:       python3-jinja2 >= 2.10
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keystoneauth1 >= 3.4.0
