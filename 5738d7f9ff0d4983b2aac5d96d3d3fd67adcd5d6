@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016a061f_c246b8b0",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2022-09-12T09:25:10Z",
+      "side": 1,
+      "message": "1.16.0",
+      "range": {
+        "startLine": 85,
+        "startChar": 31,
+        "endLine": 85,
+        "endChar": 37
+      },
+      "revId": "5738d7f9ff0d4983b2aac5d96d3d3fd67adcd5d6",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55314802_b328cb76",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2022-09-12T09:25:10Z",
+      "side": 1,
+      "message": "0.4.15",
+      "range": {
+        "startLine": 87,
+        "startChar": 36,
+        "endLine": 87,
+        "endChar": 42
+      },
+      "revId": "5738d7f9ff0d4983b2aac5d96d3d3fd67adcd5d6",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "754f0001_082e889d",
+        "filename": "openstack-designate.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2022-09-12T09:25:10Z",
+      "side": 1,
+      "message": "can be removed",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 35
+      },
+      "revId": "5738d7f9ff0d4983b2aac5d96d3d3fd67adcd5d6",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
