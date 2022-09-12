@@ -89,11 +89,10 @@ Requires:       python3-jinja2 >= 2.10
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-keystonemiddleware >= 4.17.0
-Requires:       python3-netaddr >= 0.7.18
 Requires:       python3-neutronclient >= 6.7.0
 Requires:       python3-oslo-concurrency >= 4.2.0
 Requires:       python3-oslo-config >= 2:6.8.0
-Requires:       python3-oslo-context >= 2.22.0
+Requires:       python3-oslo-context >= 4.0.0
 Requires:       python3-oslo-db >= 8.3.0
 Requires:       python3-oslo-i18n >= 3.20.0
 Requires:       python3-oslo-log >= 4.3.0
@@ -101,7 +100,7 @@ Requires:       python3-oslo-messaging >= 12.4.0
 Requires:       python3-oslo-middleware >= 3.31.0
 Requires:       python3-oslo-policy >= 3.7.0
 Requires:       python3-oslo-reports >= 1.18.0
-Requires:       python3-oslo-rootwrap >= 5.8.0
+Requires:       python3-oslo-rootwrap >= 5.15.0
 Requires:       python3-oslo-serialization >= 2.25.0
 Requires:       python3-oslo-service >= 1.31.0
 Requires:       python3-oslo-utils >= 4.7.0
@@ -121,15 +120,13 @@ Requires:       python3-werkzeug >= 0.9
 Requires:       python3-futurist >= 1.2.0
 Requires:       python3-edgegrid >= 1.1.1
 Requires:       sudo
-# python3-monasca-statsd is in requirements.txt but it's not packaged yet
-#Requires:       python3-monasca-statsd
 
 Requires:       python3-flask >= 1:0.10
 Requires:       python3-memcached >= 1.56
 Requires:       python3-paste >= 2.0.2
 Requires:       python3-paste-deploy >= 1.5.0
-Requires:       python3-migrate >= 0.11.0
-
+Requires:       python3-alembic >= 1.6.5
+Requires:       python3-osprofiler >= 3.4.0
 
 %description -n python3-%{service}
 %{common_desc}
