@@ -1,4 +1,4 @@
-%global milestone .0rc1
+%global milestone .0rc2
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 %global sources_gpg_sign 0xa63ea142678138d1bb15f2e303bdfd64dd164087
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
@@ -10,7 +10,7 @@ Name:           openstack-%{service}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        15.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        0.2%{?milestone}%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
@@ -18,9 +18,7 @@ License:        ASL 2.0
 URL:            http://launchpad.net/%{service}/
 
 Source0:        https://tarballs.openstack.org/%{service}/%{service}-%{upstream_version}.tar.gz
-#
-# patches_base=15.0.0.0rc1
-#
+# patches_base=15.0.0.0rc2
 
 Source1:        %{service}.logrotate
 Source2:        %{service}-sudoers
@@ -484,6 +482,9 @@ exit 0
 
 
 %changelog
+* Thu Sep 22 2022 RDO <dev@lists.rdoproject.org> 1:15.0.0-0.2.0rc1
+- Update to 15.0.0.0rc2
+
 * Fri Sep 16 2022 RDO <dev@lists.rdoproject.org> 1:15.0.0-0.1.0rc1
 - Update to 15.0.0.0rc1
 
