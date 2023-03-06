@@ -82,7 +82,7 @@ Group:          Applications/System
 
 Requires:       python3-debtcollector >= 1.19.0
 Requires:       python3-designateclient >= 2.12.0
-Requires:       python3-dns >= 1.16.0
+Requires:       python3-dns >= 2.2.1
 Requires:       python3-eventlet >= 0.26.1
 Requires:       python3-greenlet >= 0.4.15
 Requires:       python3-jinja2 >= 2.10
@@ -96,7 +96,7 @@ Requires:       python3-oslo-context >= 4.0.0
 Requires:       python3-oslo-db >= 8.3.0
 Requires:       python3-oslo-i18n >= 3.20.0
 Requires:       python3-oslo-log >= 4.3.0
-Requires:       python3-oslo-messaging >= 12.4.0
+Requires:       python3-oslo-messaging >= 14.1.0
 Requires:       python3-oslo-middleware >= 3.31.0
 Requires:       python3-oslo-policy >= 3.7.0
 Requires:       python3-oslo-reports >= 1.18.0
@@ -115,16 +115,15 @@ Requires:       python3-sqlalchemy >= 1.2.19
 Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-tooz >= 1.58.0
 Requires:       python3-webob >= 1.7.1
-Requires:       python3-werkzeug >= 0.9
 Requires:       python3-futurist >= 1.2.0
 Requires:       python3-edgegrid >= 1.1.1
 Requires:       sudo
 
-Requires:       python3-flask >= 1:0.10
+Requires:       python3-flask >= 2.2.1
 Requires:       python3-memcached >= 1.56
 Requires:       python3-paste >= 2.0.2
 Requires:       python3-paste-deploy >= 1.5.0
-Requires:       python3-alembic >= 1.6.5
+Requires:       python3-alembic >= 1.8.0
 Requires:       python3-osprofiler >= 3.4.0
 
 %description -n python3-%{service}
