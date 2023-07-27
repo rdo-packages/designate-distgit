@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa04b537_3cb20779",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-07-27T15:32:53Z",
+      "side": 1,
+      "message": "FTR neutronclient requirement was removed in https://github.com/openstack/designate/commit/fd09a0cfc392349ec3e7437c86aabef40c574cd4",
+      "revId": "6e522ffcd2f3bae1bc47c5f26967306cfde3dcea",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
