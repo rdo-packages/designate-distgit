@@ -1,6 +1,8 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 %global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order sphinx openstackdocstheme
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
 
@@ -13,7 +15,7 @@ Release:        XXX
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
-License:        ASL 2.0
+License:        Apache-2.0
 URL:            http://launchpad.net/%{service}/
 
 Source0:        https://tarballs.openstack.org/%{service}/%{service}-%{upstream_version}.tar.gz
@@ -40,36 +42,15 @@ BuildRequires:  /usr/bin/gpgv2
 %endif
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-pbr
-BuildRequires:  python3-setuptools
+BuildRequires:  pyproject-rpm-macros
 BuildRequires:  systemd
 BuildRequires:  openstack-macros
-# Required for config file generation
-BuildRequires:  python3-jsonschema
-BuildRequires:  python3-keystonemiddleware
-BuildRequires:  python3-neutronclient
-BuildRequires:  python3-oslo-concurrency
-BuildRequires:  python3-oslo-config
-BuildRequires:  python3-oslo-db
-BuildRequires:  python3-oslo-log
-BuildRequires:  python3-oslo-messaging
-BuildRequires:  python3-oslo-middleware
-BuildRequires:  python3-oslo-policy
-BuildRequires:  python3-oslo-service
-BuildRequires:  python3-oslo-upgradecheck
-BuildRequires:  python3-oslo-versionedobjects
-BuildRequires:  python3-os-win
-BuildRequires:  python3-tooz
-BuildRequires:  python3-dns
 
 Requires:       python3-%{service} = %{epoch}:%{version}-%{release}
 
 Requires(pre): shadow-utils
-%if 0%{?rhel} && 0%{?rhel} < 8
-%{?systemd_requires}
-%else
-%{?systemd_ordering} # does not exist on EL7
-%endif
+
+%{?systemd_ordering}
 
 %description
 %{common_desc}
@@ -77,54 +58,9 @@ Requires(pre): shadow-utils
 
 %package -n python3-%{service}
 Summary:        Designate Python libraries
-%{?python_provide:%python_provide python3-%{service}}
 Group:          Applications/System
 
-Requires:       python3-debtcollector >= 1.19.0
-Requires:       python3-designateclient >= 2.12.0
-Requires:       python3-dns >= 2.2.1
-Requires:       python3-eventlet >= 0.26.1
-Requires:       python3-greenlet >= 0.4.15
-Requires:       python3-jinja2 >= 2.10
-Requires:       python3-jsonschema >= 3.2.0
-Requires:       python3-keystoneauth1 >= 3.4.0
-Requires:       python3-keystonemiddleware >= 4.17.0
-Requires:       python3-neutronclient >= 6.7.0
-Requires:       python3-oslo-concurrency >= 4.2.0
-Requires:       python3-oslo-config >= 2:6.8.0
-Requires:       python3-oslo-context >= 4.0.0
-Requires:       python3-oslo-db >= 8.3.0
-Requires:       python3-oslo-i18n >= 3.20.0
-Requires:       python3-oslo-log >= 4.3.0
-Requires:       python3-oslo-messaging >= 14.1.0
-Requires:       python3-oslo-middleware >= 3.31.0
-Requires:       python3-oslo-policy >= 3.7.0
-Requires:       python3-oslo-reports >= 1.18.0
-Requires:       python3-oslo-rootwrap >= 5.15.0
-Requires:       python3-oslo-serialization >= 2.25.0
-Requires:       python3-oslo-service >= 1.31.0
-Requires:       python3-oslo-utils >= 4.7.0
-Requires:       python3-oslo-upgradecheck >= 1.3.0
-Requires:       python3-os-win >= 4.1.0
-Requires:       python3-oslo-versionedobjects >= 1.31.2
-Requires:       python3-pbr >= 3.1.1
-Requires:       python3-pecan >= 1.0.0
-Requires:       python3-requests >= 2.23.0
-Requires:       python3-tenacity >= 6.0.0
-Requires:       python3-sqlalchemy >= 1.2.19
-Requires:       python3-stevedore >= 1.20.0
-Requires:       python3-tooz >= 1.58.0
-Requires:       python3-webob >= 1.7.1
-Requires:       python3-futurist >= 1.2.0
-Requires:       python3-edgegrid >= 1.1.1
 Requires:       sudo
-
-Requires:       python3-flask >= 2.2.1
-Requires:       python3-memcached >= 1.56
-Requires:       python3-paste >= 2.0.2
-Requires:       python3-paste-deploy >= 1.5.0
-Requires:       python3-alembic >= 1.8.0
-Requires:       python3-osprofiler >= 3.4.0
 
 %description -n python3-%{service}
 %{common_desc}
@@ -134,7 +70,6 @@ This package contains the Designate Python library.
 
 %package -n python3-%{service}-tests
 Summary:        Designate tests
-%{?python_provide:%python_provide python3-%{service}-tests}
 Group:          Applications/System
 
 Requires:       python3-%{service} = %{epoch}:%{version}-%{release}
@@ -261,20 +196,35 @@ This package contains OpenStack Designate Worker service.
 
 find %{service} -name \*.py -exec sed -i '/\/usr\/bin\/env python/{d;q}' {} +
 
-# Let's handle dependencies ourselves
-%py_req_cleanup
 
+
+sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
+sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs}; do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+%generate_buildrequires
+%pyproject_buildrequires -t -e %{default_toxenv}
 
 %build
 export PBR_VERSION=%{version}
 export SKIP_PIP_INSTALL=1
-%{py3_build}
-
-# Generate sample config
-PYTHONPATH=. oslo-config-generator --config-file=./etc/%{service}/%{service}-config-generator.conf
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
+
+# Generate sample config
+PYTHONPATH="%{buildroot}/%{python3_sitelib}" oslo-config-generator --config-file=./etc/%{service}/%{service}-config-generator.conf
 
 # Remove unused files
 rm -rf %{buildroot}%{python3_sitelib}/bin
@@ -410,7 +360,7 @@ exit 0
 %files -n python3-%{service}
 %license LICENSE
 %{python3_sitelib}/%{service}
-%{python3_sitelib}/%{service}-*.egg-info
+%{python3_sitelib}/%{service}-*.dist-info
 %exclude %{python3_sitelib}/%{service}/tests
 
 
