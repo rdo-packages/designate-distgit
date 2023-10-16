@@ -21,7 +21,6 @@ URL:            http://launchpad.net/%{service}/
 Source0:        https://tarballs.openstack.org/%{service}/%{service}-%{upstream_version}.tar.gz
 Source1:        %{service}.logrotate
 Source2:        %{service}-sudoers
-Source10:       designate-agent.service
 Source11:       designate-api.service
 Source12:       designate-central.service
 Source13:       designate-mdns.service
@@ -105,6 +104,9 @@ Requires:       openstack-%{service}-common = %{epoch}:%{version}-%{release}
 %{common_desc}
 
 This package contains OpenStack Designate agent.
+
+designate-agent has been removed upstream so this is just an empty package for
+backwards compatibility until all the deployment tools removed its installation.
 
 
 %package api
@@ -246,7 +248,6 @@ install -p -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/openstack
 install -p -D -m 440 %{SOURCE2} %{buildroot}%{_sysconfdir}/sudoers.d/%{service}
 
 # Install systemd units
-install -p -D -m 644 %{SOURCE10} %{buildroot}%{_unitdir}/designate-agent.service
 install -p -D -m 644 %{SOURCE11} %{buildroot}%{_unitdir}/designate-api.service
 install -p -D -m 644 %{SOURCE12} %{buildroot}%{_unitdir}/designate-central.service
 install -p -D -m 644 %{SOURCE13} %{buildroot}%{_unitdir}/designate-mdns.service
@@ -268,16 +269,8 @@ getent passwd %{service} >/dev/null || \
 exit 0
 
 
-%post agent
-%systemd_post designate-agent.service
-
-
 %preun agent
 %systemd_preun designate-agent.service
-
-
-%postun agent
-%systemd_postun_with_restart designate-agent.service
 
 
 %post api
@@ -386,8 +379,6 @@ exit 0
 
 %files agent
 %license LICENSE
-%{_bindir}/designate-agent
-%{_unitdir}/designate-agent.service
 
 
 %files api
