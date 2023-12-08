@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x815AFEC729392386480E076DCC0DFE2D21C023C9
+%global sources_gpg_sign 0x2ef3fe0ec2b075ab7458b5f8b702b20b13df2318
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
@@ -8,7 +8,7 @@ Name:           openstack-%{service}
 # Liberty semver reset
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
-Version:        15.0.1
+Version:        15.0.2
 Release:        1%{?dist}
 Summary:        OpenStack DNS Service
 
@@ -480,6 +480,9 @@ exit 0
 
 
 %changelog
+* Fri Dec 08 2023 RDO <dev@lists.rdoproject.org> 1:15.0.2-1
+- Update to 15.0.2
+
 * Thu Sep 21 2023 RDO <dev@lists.rdoproject.org> 1:15.0.1-1
 - Update to 15.0.1
 
