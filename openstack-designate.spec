@@ -2,7 +2,7 @@
 %global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 # we are excluding some BRs from automatic generator
-%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order sphinx openstackdocstheme
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order sphinx openstackdocstheme infoblox-client
 %global service designate
 %global common_desc Designate is an OpenStack inspired DNSaaS.
 
@@ -267,6 +267,11 @@ getent passwd %{service} >/dev/null || \
     useradd -r -g %{service} -d %{_sharedstatedir}/%{service} -s /sbin/nologin \
     -c "OpenStack Designate Daemons" %{service}
 exit 0
+
+%check
+rm -rf designate/tests/unit/backend/test_infoblox.py
+# Some tests fail because there is no /etc/resolv.conf in the build environment
+%tox -e %{default_toxenv} -- -- --exclude-regex '(designate.tests.functional.mdns.test_handler.MdnsRequestHandlerTest.test_dispatch_opcode_notify_different_serial|designate.tests.functional.mdns.test_handler.MdnsRequestHandlerTest.test_dispatch_opcode_notify_same_serial|designate.tests.unit.mdns.test_handler.MdnsHandleTest.test_notify_same_serial|designate.tests.unit.mdns.test_handler.MdnsHandleTest.test_notify)'
 
 
 %preun agent
