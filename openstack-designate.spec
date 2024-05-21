@@ -116,7 +116,6 @@ Requires:       python3-sqlalchemy >= 1.2.19
 Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-tooz >= 1.58.0
 Requires:       python3-webob >= 1.7.1
-Requires:       python3-werkzeug >= 0.9
 Requires:       python3-futurist >= 1.2.0
 Requires:       python3-edgegrid >= 1.1.1
 Requires:       sudo
