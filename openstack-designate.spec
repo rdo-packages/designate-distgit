@@ -9,7 +9,7 @@ Name:           openstack-%{service}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        16.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack DNS Service
 
 Group:          Applications/System
@@ -87,7 +87,7 @@ Requires:       python3-designateclient >= 2.12.0
 Requires:       python3-dns >= 2.2.1
 Requires:       python3-eventlet >= 0.26.1
 Requires:       python3-greenlet >= 0.4.15
-Requires:       python3-jinja2 >= 2.10
+Requires:       python3-jinja2 >= 3.0.0
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-keystonemiddleware >= 4.17.0
@@ -480,6 +480,9 @@ exit 0
 
 
 %changelog
+* Tue May 21 2024 Tobias Urdin <tobias.urdin@binero.com> 1:16.0.2-2
+- Fix jinja2 requires
+
 * Fri Dec 08 2023 RDO <dev@lists.rdoproject.org> 1:16.0.2-1
 - Update to 16.0.2
 
