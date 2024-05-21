@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84142fd3_683f8718",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2024-05-21T16:01:43Z",
+      "side": 1,
+      "message": "Still in requirements.txt upstream in Xena https://github.com/openstack/designate/blob/unmaintained/xena/requirements.txt#L43",
+      "revId": "22e92d8e278cafb6b6ae0e2f45c899c143e1a72d",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
