@@ -120,8 +120,12 @@ Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-suds >= 0.6
 Requires:       python3-tooz >= 1.58.0
 Requires:       python3-webob >= 1.7.1
+<<<<<<< HEAD   (d6086d openstack-designate-11.0.2-1)
 Requires:       python3-werkzeug >= 0.9
 Requires:       python3-futurist
+=======
+Requires:       python3-futurist >= 1.2.0
+>>>>>>> CHANGE (028835 Remove dependency on Werkzeug package)
 Requires:       python3-edgegrid >= 1.1.1
 Requires:       sudo
 # python3-monasca-statsd is in requirements.txt but it's not packaged yet
