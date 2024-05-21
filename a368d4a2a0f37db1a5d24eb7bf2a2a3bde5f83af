@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6693a3b9_18e6c2e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2024-05-21T16:03:14Z",
+      "side": 1,
+      "message": "Still in upstream requirements.txt in Yoga https://github.com/openstack/designate/blob/unmaintained/yoga/requirements.txt#L43",
+      "revId": "a368d4a2a0f37db1a5d24eb7bf2a2a3bde5f83af",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
