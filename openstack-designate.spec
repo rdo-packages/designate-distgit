@@ -235,9 +235,9 @@ rm -rf %{buildroot}%{python3_sitelib}/tools
 
 # Move config files to proper location
 install -d -m 755 %{buildroot}%{_sysconfdir}/%{service}
-install -p -D -m 644 etc/%{service}/%{service}.conf.sample %{buildroot}%{_sysconfdir}/%{service}/%{service}.conf
+install -p -D -m 644 etc/%{service}/%{service}.conf %{buildroot}%{_sysconfdir}/%{service}/%{service}.conf
 mv %{buildroot}/usr/etc/%{service}/api-paste.ini %{buildroot}%{_sysconfdir}/%{service}/
-mv %{buildroot}/usr/etc/%{service}/rootwrap.conf.sample %{buildroot}%{_sysconfdir}/%{service}/rootwrap.conf
+mv %{buildroot}/usr/etc/%{service}/rootwrap.conf %{buildroot}%{_sysconfdir}/%{service}/rootwrap.conf
 install -d -m 755 %{buildroot}%{_datarootdir}/%{service}/rootwrap
 mv %{buildroot}/usr/etc/%{service}/rootwrap.d/*.filters %{buildroot}%{_datarootdir}/%{service}/rootwrap
 
