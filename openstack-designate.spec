@@ -379,7 +379,6 @@ rm -rf designate/tests/unit/backend/test_infoblox.py
 %{_bindir}/designate-rootwrap
 %{_bindir}/designate-manage
 %{_bindir}/designate-status
-%{_bindir}/designate-api-wsgi
 
 
 %files agent
