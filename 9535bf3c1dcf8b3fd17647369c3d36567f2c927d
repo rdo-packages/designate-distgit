@@ -33,6 +33,23 @@
       "message": "We also need to fix the Apache mod_wsgi config for the removal of this script.",
       "revId": "9535bf3c1dcf8b3fd17647369c3d36567f2c927d",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3904a768_6160a19b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 638
+      },
+      "writtenOn": "2025-05-19T19:23:26Z",
+      "side": 1,
+      "message": "Alternate patch proposed here: https://review.rdoproject.org/r/c/openstack/designate-distgit/+/57670",
+      "revId": "9535bf3c1dcf8b3fd17647369c3d36567f2c927d",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
