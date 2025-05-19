@@ -27,6 +27,8 @@ Source13:       designate-mdns.service
 Source15:       designate-sink.service
 Source17:       designate-producer.service
 Source18:       designate-worker.service
+Source19:       designate-api-wsgi
+
 # Required for tarball sources verification
 %if 0%{?sources_gpg} == 1
 Source101:        https://tarballs.openstack.org/%{service}/%{service}-%{upstream_version}.tar.gz.asc
@@ -254,6 +256,9 @@ install -p -D -m 644 %{SOURCE13} %{buildroot}%{_unitdir}/designate-mdns.service
 install -p -D -m 644 %{SOURCE15} %{buildroot}%{_unitdir}/designate-sink.service
 install -p -D -m 644 %{SOURCE17} %{buildroot}%{_unitdir}/designate-producer.service
 install -p -D -m 644 %{SOURCE18} %{buildroot}%{_unitdir}/designate-worker.service
+
+# Install the designate-api-wsgi compatibility file
+install -m 755 %{SOURCE19} %{buildroot}%{_bindir}/%{service}-api-wsgi
 
 # Setup directories
 install -d -m 755 %{buildroot}%{_datadir}/%{service}

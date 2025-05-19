@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+#PBR Generated from 'wsgi_scripts' - Archived for Designate stable branches
+
+import threading
+
+from designate.api.wsgi import init_application
+
+
+application = None
+app_lock = threading.Lock()
+
+with app_lock:
+    if application is None:
+        application = init_application()
