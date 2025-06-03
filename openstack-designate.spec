@@ -430,3 +430,4 @@ rm -rf designate/tests/unit/backend/test_infoblox.py
 
 %changelog
 
+# REMOVEME: error caused by commit https://opendev.org/openstack/designate/commit/c1c89d35a15eca75ad70720f253d1e324703d221
