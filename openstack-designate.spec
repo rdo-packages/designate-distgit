@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2ef3fe0ec2b075ab7458b5f8b702b20b13df2318
+%global sources_gpg_sign 0x22284f69d9eccdf3df7819791c711af193ff8e54
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 # we are excluding some BRs from automatic generator
 %global excluded_brs doc8 bandit pre-commit hacking flake8-import-order sphinx openstackdocstheme
@@ -10,7 +10,7 @@ Name:           openstack-%{service}
 # Liberty semver reset
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
-Version:        18.0.0
+Version:        18.1.0
 Release:        1%{?dist}
 Summary:        OpenStack DNS Service
 
@@ -421,6 +421,9 @@ exit 0
 
 
 %changelog
+* Fri Jul 25 2025 RDO <dev@lists.rdoproject.org> 1:18.1.0-1
+- Update to 18.1.0
+
 * Wed Apr 03 2024 RDO <dev@lists.rdoproject.org> 1:18.0.0-1
 - Update to 18.0.0
 
