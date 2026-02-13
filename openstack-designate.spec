@@ -433,3 +433,4 @@ rm -rf designate/tests/unit/backend/test_infoblox.py
 - Update to 20.0.0.0rc1
 
 
+# REMOVEME: error caused by commit https://opendev.org/openstack/designate/commit/eb09c9785e1c772c8af7e681cfe39b35652415f4
